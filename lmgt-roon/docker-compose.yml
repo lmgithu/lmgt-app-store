@@ -4,6 +4,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: ${APP_ID}_roonserver_1
+      APP_PORT: 0
 
   roonserver:
     image: elgeeko/roon-server:latest
