@@ -54,8 +54,6 @@ services:
       - ${APP_DATA_DIR}/grafana:/var/lib/grafana
     depends_on:
       - database
-    ports:
-    - 3001:3000
 
   mosquitto:
     image: eclipse-mosquitto:2
