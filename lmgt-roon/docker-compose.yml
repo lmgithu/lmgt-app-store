@@ -1,7 +1,7 @@
 services:
   roon-server:
     image: steefdebruijn/docker-roonserver:latest
-    container_name: roon-server
+    container_name: lmgt-roon
     restart: unless-stopped
     network_mode: host
     user: "1000:1000"
