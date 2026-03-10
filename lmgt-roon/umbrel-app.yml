@@ -8,7 +8,8 @@ description: >-
   Roon Server (headless core) for multi-room audio, using elgeeko/roon-server image.
   Discovers via network (host mode). Manage from Roon app on phone/PC.
   Music library via mounted path.
-icon: icon.png
+icon: icon.svg
+port: 0
 developer: elgeeko
 website: https://roonlabs.com
 repo: https://github.com/elgeeko1/roon-server-docker

@@ -1,9 +1,10 @@
-version: "3.8"
+version: "3.7"
 
 services:
   app_proxy:
-  environment:
-    APP_HOST: ${APP_ID}_roonserver_1
+    environment:
+      APP_HOST: ${APP_ID}_roonserver_1
+
   roon-server:
     image: elgeeko/roon-server:latest
     restart: unless-stopped
