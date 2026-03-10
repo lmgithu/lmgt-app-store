@@ -7,7 +7,11 @@ services:
     environment:
       - TZ=Europe/Budapest
     volumes:
-      - ${APP_DATA_DIR}/roon-server-bin:/opt/RoonServer
-      - ${APP_DATA_DIR}/roon-cache:/var/roon
+      - roon-config:/opt/RoonServer
+      - roon-cache:/var/roon
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
     user: "1000:1000"
+
+volumes:  # named volumes deklarálása – Docker kezeli őket
+  roon-config:
+  roon-cache:
