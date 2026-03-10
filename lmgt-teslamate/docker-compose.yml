@@ -3,53 +3,62 @@ version: "3.7"
 services:
   app_proxy:
 	environment:
-	  APP_HOST: lmgt-teslamate_teslamate_1
+	  APP_HOST:lmgt_teslamate_1
 	  APP_PORT: 4000
 
   teslamate:
-	image: teslamate/teslamate:latest
+	image: teslamate/teslamate:3.0.0 
 	restart: on-failure
-	stop_grace_period: 1m
 	environment:
-	  - ENCRYPTION_KEY=${APP_SEED}                     # auto-generated secure key by Umbrel
-	  - DATABASE_USER=teslamate
-	  - DATABASE_PASS=C991a366b7fU37fe8e2829f20e2420901
-	  - DATABASE_NAME=teslamate
-	  - DATABASE_HOST=database
-	  - MQTT_HOST=mosquitto
+	  ENCRYPTION_KEY: ${APP_SEED}    
+	  DATABASE_USER: teslamate
+	  DATABASE_PASS: ${APP_PASSWORD} 
+	  DATABASE_NAME: teslamate
+	  DATABASE_HOST: database
+	  MQTT_HOST: mosquitto
 	volumes:
 	  - ${APP_DATA_DIR}/import:/opt/app/import
+	cap_drop:
+	  - all
 	depends_on:
-	  - database
-	  - mosquitto
+	  database:
+		condition: service_healthy
+	  mosquitto:
+		condition: service_started
 
   database:
 	image: postgres:16
 	restart: on-failure
 	environment:
-	  - POSTGRES_USER=teslamate
-	  - POSTGRES_PASSWORD=C991a366b7fU37fe8e2829f20e2420901
-	  - POSTGRES_DB=teslamate
+	  POSTGRES_USER: teslamate
+	  POSTGRES_PASSWORD: ${APP_PASSWORD}
+	  POSTGRES_DB: teslamate
 	volumes:
 	  - ${APP_DATA_DIR}/postgres:/var/lib/postgresql/data
+	healthcheck:
+	  test: ["CMD-SHELL", "pg_isready -U teslamate"]
+	  interval: 10s
+	  timeout: 5s
+	  retries: 5
+	  start_period: 30s
 
   grafana:
-	image: teslamate/grafana:latest
+	image: teslamate/grafana:latest   # Grafana image usually follows main version
 	restart: on-failure
 	environment:
-	  - DATABASE_USER=teslamate
-	  - DATABASE_PASS=C991a366b7fU37fe8e2829f20e2420901
-	  - DATABASE_NAME=teslamate
-	  - DATABASE_HOST=database
+	  DATABASE_USER: teslamate
+	  DATABASE_PASS: ${APP_PASSWORD}
+	  DATABASE_NAME: teslamate
+	  DATABASE_HOST: database
 	volumes:
 	  - ${APP_DATA_DIR}/grafana:/var/lib/grafana
-	ports:
-	  - 3001:3000
+	depends_on:
+	  - database
 
   mosquitto:
 	image: eclipse-mosquitto:2
 	restart: on-failure
-	command: mosquitto -c /mosquitto/no-auth.conf
+	command: mosquitto -c /mosquitto-no-auth.conf
 	volumes:
-	  - ${APP_DATA_DIR}/mosquitto/config:/mosquitto/config
-	  - ${APP_DATA_DIR}/mosquitto/data:/mosquitto/data
+	  - ${APP_DATA_DIR}/mosquitto-config:/mosquitto/config
+	  - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
