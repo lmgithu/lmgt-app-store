@@ -77,4 +77,4 @@ services:
       MQTT_HOST: mosquitto
       TZ: Europe/Berlin
     ports:
-      - 8080:8080
+      - 5500:8080
