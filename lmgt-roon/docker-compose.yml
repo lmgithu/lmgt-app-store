@@ -4,8 +4,10 @@ services:
     container_name: roon-server
     restart: unless-stopped
     network_mode: host
-    user: 1000:1000
+    user: "1000:1000"
+    environment:
+      - TZ=Europe/Budapest
     volumes:
       - ${APP_DATA_DIR}/roon:/opt/RoonServer
       - ${APP_DATA_DIR}/cache:/var/roon
-      - //home/umbrel/umbrel/home/Downloads/music:/music:ro     # Change this path! Read-only for safety
+      - /home/umbrel/umbrel/home/Downloads/music:/music:ro
