@@ -1,6 +1,6 @@
 services:
   roon-server:
-    image: steefdebruijn/docker-roonserver:latest
+    image: elgeeko/roon-server:latest
     container_name: lmgt-roon
     restart: unless-stopped
     network_mode: host
@@ -8,6 +8,6 @@ services:
     environment:
       - TZ=Europe/Budapest
     volumes:
-      - ${APP_DATA_DIR}/app:/app
-      - ${APP_DATA_DIR}/data:/data
+      - ${APP_DATA_DIR}/roon:/opt/RoonServer
+      - ${APP_DATA_DIR}/cache:/var/roon
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
