@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslamate
 category: automotive             
 name: TeslaMate
-version: "3.0.0-v9"                
+version: "3.0.0-v1"                
 tagline: Open-source self-hosted Tesla data logger
 description: >-
   TeslaMate logs your Tesla drives, charges, and stats. Beautiful Grafana dashboards included.
@@ -21,6 +21,6 @@ defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
   Updated to TeslaMate v3.0.0 (latest stable as of March 2026).
-  HedgieMate is now integrated with port 5500.
+  HedgieMate integration on port 5500.
 torOnly: false
 release: ""

@@ -3,15 +3,14 @@ id: lmgt-roon
 category: media
 name: Roon Server
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon/icon.png  
-version: "1.0.4"
+version: "1.0.1"
 tagline: High-end music server & library manager (community Docker)
 description: >-
   Roon Server turns your Umbrel into a powerful music server. Organizes your library,
   connects to streaming services (Tidal/Qobuz), and streams to Roon-ready devices.
   Control via Roon apps on phone, tablet, or desktop. No built-in web UI.
   
-  Uses a trusted community Docker image (elgeeko/roon-server). Music library folder is
-  mounted automatically from your Downloads/music folder.
+  Uses a trusted community Docker image (elgeeko/roon-server).
 developer: Roon Labs (server by community Docker maintainer)
 website: https://roon.app
 dependencies: []
@@ -26,7 +25,5 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  First release for Umbrel community store.
-  - Uses elgeeko/roon-server:latest
-  - host networking for best device discovery
-  - Persistent data & cache
+  First release for Umbrel community store. Uses elgeeko/roon-server:latest with persistent data & cache. Music library folder is
+  mounted automatically from your Downloads/music folder to /music as read-only.

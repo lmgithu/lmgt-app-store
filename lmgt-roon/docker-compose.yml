@@ -12,6 +12,6 @@ services:
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
     user: "1000:1000"
 
-volumes:  # named volumes deklarálása – Docker kezeli őket
+volumes:
   roon-config:
   roon-cache:
