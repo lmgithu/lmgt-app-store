@@ -8,6 +8,6 @@ services:
     environment:
       - TZ=Europe/Budapest
     volumes:
-      - ${APP_DATA_DIR}/roon:/opt/RoonServer
-      - ${APP_DATA_DIR}/cache:/var/roon
+      - ${APP_DATA_DIR}/app:/app
+      - ${APP_DATA_DIR}/data:/data
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
