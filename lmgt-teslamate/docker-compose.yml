@@ -3,16 +3,16 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: ${APP_ID}_teslamate_1   # Umbrel auto-replaces ${APP_ID} with pluto-teslamate
+      APP_HOST: ${APP_ID}_teslamate_1
       APP_PORT: 4000
 
   teslamate:
-    image: teslamate/teslamate:3.0.0   # or :latest if you prefer auto-updates
+    image: teslamate/teslamate:3.0.0   
     restart: on-failure
     environment:
-      ENCRYPTION_KEY: ${APP_SEED}      # Umbrel generates secure random key
+      ENCRYPTION_KEY: ${APP_SEED}      
       DATABASE_USER: teslamate
-      DATABASE_PASS: ${APP_PASSWORD}   # Umbrel generates strong random password
+      DATABASE_PASS: ${APP_PASSWORD} 
       DATABASE_NAME: teslamate
       DATABASE_HOST: database
       MQTT_HOST: mosquitto
@@ -43,7 +43,7 @@ services:
       start_period: 30s
 
   grafana:
-    image: teslamate/grafana:latest   # Grafana image usually follows main version
+    image: teslamate/grafana:latest
     restart: on-failure
     environment:
       DATABASE_USER: teslamate
