@@ -1,6 +1,6 @@
 services:
   roon-server:
-    image: elgeeko/roon-server:latest
+    image: steefdebruijn/docker-roonserver:latest
     container_name: roon-server
     restart: unless-stopped
     network_mode: host
