@@ -1,12 +1,17 @@
 version: "3.8"
 
 services:
+  app_proxy:
+    environment:
+      APP_HOST: ${APP_ID}_roon_1
+
+services:
   roon-server:
     image: elgeeko/roon-server:latest
     restart: unless-stopped
     network_mode: host
     environment:
-      - TZ=Europe/Berlin
+      TZ: Europe/Berlin
     volumes:
       - ${APP_DATA_DIR}/roon-config:/opt/RoonServer
       - ${APP_DATA_DIR}/roon-cache:/var/roon
