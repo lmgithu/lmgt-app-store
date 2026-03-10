@@ -9,8 +9,9 @@ description: >-
   Roon Server turns your Umbrel into a powerful music server. Organizes your library,
   connects to streaming services (Tidal/Qobuz), and streams to Roon-ready devices.
   Control via Roon apps on phone, tablet, or desktop. No built-in web UI.
-  
-  Uses a trusted community Docker image (elgeeko/roon-server).
+  <br/><br/>
+  Uses a trusted community Docker image (elgeeko/roon-server).<br/><br/>Music library folder is
+    mounted automatically from your Downloads/music folder to /music as read-only.
 developer: Roon Labs (server by community Docker maintainer)
 website: https://roon.app
 dependencies: []
@@ -25,5 +26,4 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  First release for Umbrel community store. Uses elgeeko/roon-server:latest with persistent data & cache. Music library folder is
-  mounted automatically from your Downloads/music folder to /music as read-only.
+  First release for Umbrel community store. Uses elgeeko/roon-server:latest with persistent data & cache. 
