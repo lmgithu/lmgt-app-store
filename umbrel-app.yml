@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: lmgt-teslamate
+category: automotive             
+name: TeslaMate
+version: "3.0.0-v9"                
+tagline: Open-source self-hosted Tesla data logger
+description: >-
+  TeslaMate logs your Tesla drives, charges, and stats. Beautiful Grafana dashboards included.
+  Supports latest Tesla API changes (as of 2026).
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslamate/icon-v.svg
+port: 4000                    
+developer: teslamate-org
+website: https://teslamate.org
+repo: https://github.com/teslamate-org/teslamate
+support: https://github.com/teslamate-org/teslamate/discussions
+gallery:
+  - 1.jpg
+  - 2.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: >-
+  Updated to TeslaMate v3.0.0 (latest stable as of March 2026).
+  HedgieMate is now integrated with port 5500.
+torOnly: false
+release: ""

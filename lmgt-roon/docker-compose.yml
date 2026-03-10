@@ -1,0 +1,11 @@
+services:
+  roon-server:
+    image: elgeeko/roon-server:latest
+    container_name: roon-server
+    restart: unless-stopped
+    network_mode: host
+    
+    volumes:
+      - ${APP_DATA_DIR}/roon:/opt/RoonServer
+      - ${APP_DATA_DIR}/cache:/var/roon
+      - //home/umbrel/umbrel/home/Downloads/music:/music:ro     # Change this path! Read-only for safety
