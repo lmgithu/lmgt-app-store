@@ -2,12 +2,12 @@ manifestVersion: 1
 id: lmgt-teslamate
 category: automotive             
 name: TeslaMate
-version: "3.0.0.8"                
+version: "3.0.0-v9"                
 tagline: Open-source self-hosted Tesla data logger
 description: >-
   TeslaMate logs your Tesla drives, charges, and stats. Beautiful Grafana dashboards included.
   Supports latest Tesla API changes (as of 2026).
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslamate/icon.svg?v2
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslamate/icon2.svg
 port: 4000                    
 developer: teslamate-org
 website: https://teslamate.org
