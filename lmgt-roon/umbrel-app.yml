@@ -1,8 +1,8 @@
 manifestVersion: 1
-id: lmgt-roon-server
+id: lmgt-roon
 category: media
 name: Roon Server
-version: "1.0.1"
+version: "1.0.2"
 tagline: Headless Roon music server & library manager
 description: >-
   Roon Server (headless core) for multi-room audio, using elgeeko/roon-server image.

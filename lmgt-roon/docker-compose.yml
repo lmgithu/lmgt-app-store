@@ -3,7 +3,7 @@ version: "3.8"
 services:
   app_proxy:
     environment:
-      APP_HOST: ${APP_ID}_roon_1
+      APP_HOST: ${APP_ID}_roonserver_1
 
 services:
   roon-server:
