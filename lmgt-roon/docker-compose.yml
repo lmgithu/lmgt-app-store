@@ -4,10 +4,10 @@ services:
     container_name: lmgt-roon
     restart: unless-stopped
     network_mode: host
-    user: "1000:1000"
     environment:
       - TZ=Europe/Budapest
     volumes:
-      - ${APP_DATA_DIR}/roon:/opt/RoonServer
-      - ${APP_DATA_DIR}/cache:/var/roon
+      - ${APP_DATA_DIR}/roon-server-bin:/opt/RoonServer
+      - ${APP_DATA_DIR}/roon-cache:/var/roon
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
+    user: "1000:1000"
