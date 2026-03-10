@@ -5,7 +5,7 @@ services:
     environment:
       APP_HOST: ${APP_ID}_roonserver_1
 
-  roon-server:
+  roonserver:
     image: elgeeko/roon-server:latest
     restart: unless-stopped
     network_mode: host
