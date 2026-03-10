@@ -1,0 +1,19 @@
+manifestVersion: 1
+id: lmgt-teslamate          # MUST match the folder name
+category: other
+name: TeslaMate
+version: "1.0.0"                    # you can bump this later
+tagline: Self-hosted Tesla data logger with Grafana dashboards
+description: >-
+  TeslaMate is a powerful, self-hosted data logger for your Tesla vehicles.
+  It records every drive, charge session, and more. Includes beautiful Grafana dashboards.
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/teslamate-light.png
+port: 4000
+developer: teslamate-org
+website: https://teslamate.org
+repo: https://github.com/teslamate-org/teslamate
+support: https://github.com/teslamate-org/teslamate/discussions
+gallery: []
+releaseNotes: First Umbrel release
+submitter: LMGT
+submission: ""
