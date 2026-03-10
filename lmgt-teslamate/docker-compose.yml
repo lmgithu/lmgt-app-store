@@ -62,3 +62,19 @@ services:
     volumes:
       - ${APP_DATA_DIR}/mosquitto-config:/mosquitto/config
       - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
+      
+  teslamateapi:
+    image: tobiasehlert/teslamateapi:latest
+    restart: always
+    depends_on:
+      - database
+    environment:
+      ENCRYPTION_KEY: ${APP_SEED}      
+      DATABASE_USER: teslamate
+      DATABASE_PASS: ${APP_PASSWORD} 
+      DATABASE_NAME: teslamate
+      DATABASE_HOST: database
+      MQTT_HOST: mosquitto
+      TZ: Europe/Berlin
+    ports:
+      - 8080:8080
