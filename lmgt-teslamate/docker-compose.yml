@@ -2,63 +2,63 @@ version: "3.7"
 
 services:
   app_proxy:
-	environment:
-	  APP_HOST:lmgt_teslamate_1
-	  APP_PORT: 4000
+    environment:
+      APP_HOST: ${APP_ID}_teslamate_1   # Umbrel auto-replaces ${APP_ID} with pluto-teslamate
+      APP_PORT: 4000
 
   teslamate:
-	image: teslamate/teslamate:3.0.0 
-	restart: on-failure
-	environment:
-	  ENCRYPTION_KEY: ${APP_SEED}    
-	  DATABASE_USER: teslamate
-	  DATABASE_PASS: ${APP_PASSWORD} 
-	  DATABASE_NAME: teslamate
-	  DATABASE_HOST: database
-	  MQTT_HOST: mosquitto
-	volumes:
-	  - ${APP_DATA_DIR}/import:/opt/app/import
-	cap_drop:
-	  - all
-	depends_on:
-	  database:
-		condition: service_healthy
-	  mosquitto:
-		condition: service_started
+    image: teslamate/teslamate:3.0.0   # or :latest if you prefer auto-updates
+    restart: on-failure
+    environment:
+      ENCRYPTION_KEY: ${APP_SEED}      # Umbrel generates secure random key
+      DATABASE_USER: teslamate
+      DATABASE_PASS: ${APP_PASSWORD}   # Umbrel generates strong random password
+      DATABASE_NAME: teslamate
+      DATABASE_HOST: database
+      MQTT_HOST: mosquitto
+    volumes:
+      - ${APP_DATA_DIR}/import:/opt/app/import
+    cap_drop:
+      - all
+    depends_on:
+      database:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
 
   database:
-	image: postgres:16
-	restart: on-failure
-	environment:
-	  POSTGRES_USER: teslamate
-	  POSTGRES_PASSWORD: ${APP_PASSWORD}
-	  POSTGRES_DB: teslamate
-	volumes:
-	  - ${APP_DATA_DIR}/postgres:/var/lib/postgresql/data
-	healthcheck:
-	  test: ["CMD-SHELL", "pg_isready -U teslamate"]
-	  interval: 10s
-	  timeout: 5s
-	  retries: 5
-	  start_period: 30s
+    image: postgres:16
+    restart: on-failure
+    environment:
+      POSTGRES_USER: teslamate
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+      POSTGRES_DB: teslamate
+    volumes:
+      - ${APP_DATA_DIR}/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U teslamate"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   grafana:
-	image: teslamate/grafana:latest   # Grafana image usually follows main version
-	restart: on-failure
-	environment:
-	  DATABASE_USER: teslamate
-	  DATABASE_PASS: ${APP_PASSWORD}
-	  DATABASE_NAME: teslamate
-	  DATABASE_HOST: database
-	volumes:
-	  - ${APP_DATA_DIR}/grafana:/var/lib/grafana
-	depends_on:
-	  - database
+    image: teslamate/grafana:latest   # Grafana image usually follows main version
+    restart: on-failure
+    environment:
+      DATABASE_USER: teslamate
+      DATABASE_PASS: ${APP_PASSWORD}
+      DATABASE_NAME: teslamate
+      DATABASE_HOST: database
+    volumes:
+      - ${APP_DATA_DIR}/grafana:/var/lib/grafana
+    depends_on:
+      - database
 
   mosquitto:
-	image: eclipse-mosquitto:2
-	restart: on-failure
-	command: mosquitto -c /mosquitto-no-auth.conf
-	volumes:
-	  - ${APP_DATA_DIR}/mosquitto-config:/mosquitto/config
-	  - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
+    image: eclipse-mosquitto:2
+    restart: on-failure
+    command: mosquitto -c /mosquitto-no-auth.conf
+    volumes:
+      - ${APP_DATA_DIR}/mosquitto-config:/mosquitto/config
+      - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
