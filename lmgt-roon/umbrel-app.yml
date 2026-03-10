@@ -10,7 +10,7 @@ description: >-
   connects to streaming services (Tidal/Qobuz), and streams to Roon-ready devices.
   Control via Roon apps on phone, tablet, or desktop. No built-in web UI.
   <br/><br/>
-  Uses a trusted community Docker image (elgeeko/roon-server).<br/><br/>Music library folder is
+  Uses a trusted community Docker image (elgeeko/roon-server).\n\nMusic library folder is
     mounted automatically from your Downloads/music folder to /music as read-only.
 developer: Roon Labs (server by community Docker maintainer)
 website: https://roon.app
