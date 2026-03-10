@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslamate          # MUST match the folder name
 category: other
 name: TeslaMate
-version: "1.0.0"                    # you can bump this later
+version: "1.0.1"                    # you can bump this later
 tagline: Self-hosted Tesla data logger with Grafana dashboards
 description: >-
   TeslaMate is a powerful, self-hosted data logger for your Tesla vehicles.
