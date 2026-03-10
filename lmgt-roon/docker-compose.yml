@@ -1,10 +1,14 @@
 version: "3.7"
-
 services:
-  roonserver:
+  roon:
     image: elgeeko/roon-server:latest
     restart: unless-stopped
+    hostname: ${DEVICE_HOSTNAME}
     network_mode: host
+    environment:
+      TZ: "Europe/Berlin"
+    container_name: roon_server_1
     volumes:
       - ${APP_DATA_DIR}/roon-config:/opt/RoonServer
       - ${APP_DATA_DIR}/roon-cache:/var/roon
+      - ${UMBREL_ROOT}/home/Downloads/music:/music:ro
