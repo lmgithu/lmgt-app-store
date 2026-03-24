@@ -21,6 +21,6 @@ defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
   Updated to TeslaMate v3.0.0 (latest stable as of March 2026).
-  HedgieMate integration on port 5500.
+  TeslamateApi service integration via port 5500.
 torOnly: false
 release: ""
