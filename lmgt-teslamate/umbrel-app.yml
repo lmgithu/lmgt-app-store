@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslamate
 category: automotive             
 name: TeslaMate
-version: "3.0.0-v3"                
+version: "3.0.0-v5"                
 tagline: Open-source self-hosted Tesla data logger
 description: >-
   TeslaMate logs your Tesla drives, charges, and stats.
@@ -21,6 +21,6 @@ defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
   Updated to TeslaMate v3.0.0 (latest stable as of March 2026).
-  TeslamateApi service integration via port 5500.
+  TeslaMateApi service integration via port 5500.
 torOnly: false
 release: ""
