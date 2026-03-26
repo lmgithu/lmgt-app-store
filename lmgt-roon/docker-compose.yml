@@ -10,6 +10,7 @@ services:
       - roon-config:/opt/RoonServer
       - roon-cache:/var/roon
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
+      - /home/umbrel/umbrel/home/Downloads/music-dsd:/music-dsd:ro
       - /home/umbrel/umbrel/home/Backups:/backups
     user: "1000:1000"
 

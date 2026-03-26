@@ -3,7 +3,7 @@ id: lmgt-roon
 category: media
 name: Roon Server
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon/icon.png  
-version: "1.0.1"
+version: "1.0.2"
 tagline: High-end music server & library manager (community Docker)
 description: >-
   Roon Server turns your Umbrel into a powerful music server. Organizes your library,
@@ -14,7 +14,7 @@ description: >-
   Uses a trusted community Docker image (elgeeko/roon-server). 
 
   
-  Music library folder is mounted automatically from your Downloads/music folder to /music as read-only. Backups folder is mounted as /backups.
+  Music library folder is mounted automatically from your Downloads/music folder to /music as read-only. Downloads/music-dsd folder is mounted to /music-dsd as read-only. Backups folder is mounted as /backups.
 developer: Roon Labs (server by community Docker maintainer)
 website: https://roon.app
 dependencies: []
