@@ -9,7 +9,7 @@ description: >-
   You can also add newlines!
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-soulseek/icon.svg
 port: 5030
-developer: soulseek-org
+developer: slskd
 website: https://www.slsknet.org/
 repo: https://github.com/slskd/slskd/
 support: https://github.com/slskd/slskd/issues

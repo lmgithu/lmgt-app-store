@@ -1,12 +1,15 @@
+version: '3.7'
+
 services:
   app_proxy:
-   environment:
-    APP_HOST: lmgt-soulseek
-    APP_PORT: 5030
-  
-  lmgt-soulseek:
+    environment:
+      APP_HOST: slskd
+      APP_PORT: 5030
+    container_name: slskd_app_proxy
+
+  slskd:
     image: slskd/slskd:latest
-    container_name: lmgt-soulseek
+    container_name: slskd
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -20,13 +23,12 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${APP_DATA_DIR}/data:/app
-      - ${UMBREL_ROOT}/home/Downloads/incomplete:/content/incomplete
-      - ${UMBREL_ROOT}/home/Downloads/complete:/content/downloads
-      - ${UMBREL_ROOT}/home/Downloads/music:/content/music:ro
+      - ${UMBREL_ROOT}/home/Downloads/incomplete:/app/incomplete
+      - ${UMBREL_ROOT}/home/Downloads/complete:/app/downloads
+      - ${UMBREL_ROOT}/home/Downloads/music:/music:ro
       - SLSKD_SHARED_DIR=/content/music
       - SLSKD_DOWNLOADS_DIR=/content/downloads
       - SLSKD_INCOMPLETE_DIR=/content/incomplete
       - SLSKD_CONFIG=/config
     restart: on-failure
-    user: "1000:1000"
-    
+  
