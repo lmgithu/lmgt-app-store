@@ -6,10 +6,23 @@ services:
       APP_PORT: 5030
       PROXY_AUTH_ADD: 'false'
     container_name: lmgt-slskd_app_proxy_1
+  permissions:
+    image: alpine:latest
+    user: "0:0"
+    restart: "no"
+    volumes:
+      - ${APP_DATA_DIR}/data:/app   # ← only this one
+    command: >
+      sh -c "chown -R 1000:1000 /app && 
+             chmod -R 755 /app && 
+             echo 'Permissions fixed for slskd data folder'"
   web:
     image: slskd/slskd:latest
     user: "1000:1000"
     restart: on-failure
+    depends_on:
+      permissions:
+        condition: service_completed_successfully
     ports:
       - '5031:5031'
       - '50300:50300'
