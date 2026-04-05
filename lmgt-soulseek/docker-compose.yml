@@ -26,9 +26,9 @@ services:
       - ${UMBREL_ROOT}/home/Downloads/incomplete:/app/incomplete
       - ${UMBREL_ROOT}/home/Downloads/complete:/app/downloads
       - ${UMBREL_ROOT}/home/Downloads/music:/music:ro
-      - SLSKD_SHARED_DIR=/content/music
-      - SLSKD_DOWNLOADS_DIR=/content/downloads
-      - SLSKD_INCOMPLETE_DIR=/content/incomplete
+      - SLSKD_SHARED_DIR=/music
+      - SLSKD_DOWNLOADS_DIR=/app/downloads
+      - SLSKD_INCOMPLETE_DIR=/app/incomplete
       - SLSKD_CONFIG=/config
     restart: on-failure
   
