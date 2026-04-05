@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: ${APP_ID}_soulseek_1
+      APP_PORT: 5030
+
+  slskd:
+    image: slskd/slskd:latest
+    container_name: slskd
+    expose:
+      - 5030
+    environment:
+      - SLSKD_REMOTE_CONFIGURATION=true
+      - PUID=1000
+      - PGID=1000
+      - UMASK=0002
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data:/app
+      - ${UMBREL_ROOT}/home/Downloads/incomplete:/content/incomplete
+      - ${UMBREL_ROOT}/home/Downloads/complete:/content/downloads
+      - ${UMBREL_ROOT}/home/Downloads/music:/content/music:ro
+    restart: on-failure
