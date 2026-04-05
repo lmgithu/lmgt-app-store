@@ -3,14 +3,11 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: ${APP_ID}_soulseek_1
+      APP_HOST: soulseek
       APP_PORT: 5030
 
   soulseek:
     image: slskd/slskd:latest
-    cap_add:
-    - NET_ADMIN
-    - SYS_MODULE
     restart: on-failure
     expose:
       - 5030
@@ -18,7 +15,6 @@ services:
       - SLSKD_REMOTE_CONFIGURATION=true
       - SLSKD_DOWNLOADS_DIR=/content/downloads
       - SLSKD_INCOMPLETE_DIR=/content/incomplete
-      - SLSKD_CONFIG=/config
       - PUID=1000
       - PGID=1000
       - UMASK=0002
