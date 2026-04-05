@@ -1,7 +1,5 @@
-version: "3.7"
-
 services:
-  slskd:
+  lmgt-soulseek:
     image: slskd/slskd:latest
     container_name: lmgt-soulseek
     cap_add:
@@ -25,4 +23,5 @@ services:
       - SLSKD_INCOMPLETE_DIR=/content/incomplete
       - SLSKD_CONFIG=/config
     restart: on-failure
+    user: "1000:1000"
     
