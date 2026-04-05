@@ -1,12 +1,6 @@
 version: "3.7"
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: lmgt-soulseek
-      APP_PORT: 5030
-      PROXY_AUTH_ADD: "false"
-
   slskd:
     image: slskd/slskd:latest
     container_name: lmgt-soulseek
