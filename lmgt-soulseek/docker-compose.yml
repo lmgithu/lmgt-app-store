@@ -3,13 +3,13 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: slskd
+      APP_HOST: lmgt_web_1
       APP_PORT: 5030
     container_name: slskd_app_proxy
 
-  slskd:
+  web:
     image: slskd/slskd:latest
-    container_name: slskd
+    container_name: lmgt_web_1
     cap_add:
     - NET_ADMIN
     - SYS_MODULE

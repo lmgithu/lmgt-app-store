@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt_soulseek
 category: media
 name: Soulseek
-version: "1.0.2"
+version: "1.0.3"
 tagline: Bring your music to umbrel
 description: >-
   Add your app's description here.
