@@ -1,21 +1,22 @@
-version: "3.7"
+version: '3.7'
 
 services:
   app_proxy:
     environment:
-      APP_HOST: lmgt_soulseek_1
+      APP_HOST: slskd
       APP_PORT: 5030
+    container_name: slskd_app_proxy
 
-  soulseek:
+  slskd:
     image: slskd/slskd:latest
-    container_name: lmgt_soulseek_1
-    restart: on-failure
+    container_name: slskd
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
     expose:
       - 5030
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
-      - SLSKD_DOWNLOADS_DIR=/content/downloads
-      - SLSKD_INCOMPLETE_DIR=/content/incomplete
       - PUID=1000
       - PGID=1000
       - UMASK=0002
@@ -25,3 +26,5 @@ services:
       - ${UMBREL_ROOT}/home/Downloads/incomplete:/content/incomplete
       - ${UMBREL_ROOT}/home/Downloads/complete:/content/downloads
       - ${UMBREL_ROOT}/home/Downloads/music:/content/music:ro
+    restart: on-failure
+    
