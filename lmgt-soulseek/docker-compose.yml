@@ -1,10 +1,11 @@
-version: '3.7'
+version: "3.7"
 
 services:
   app_proxy:
     environment:
       APP_HOST: lmgt-soulseek
       APP_PORT: 5030
+      PROXY_AUTH_ADD: "false"
 
   slskd:
     image: slskd/slskd:latest
@@ -25,5 +26,9 @@ services:
       - ${UMBREL_ROOT}/home/Downloads/incomplete:/content/incomplete
       - ${UMBREL_ROOT}/home/Downloads/complete:/content/downloads
       - ${UMBREL_ROOT}/home/Downloads/music:/content/music:ro
+      - SLSKD_SHARED_DIR=/content/music
+      - SLSKD_DOWNLOADS_DIR=/content/downloads
+      - SLSKD_INCOMPLETE_DIR=/content/incomplete
+      - SLSKD_CONFIG=/config
     restart: on-failure
     

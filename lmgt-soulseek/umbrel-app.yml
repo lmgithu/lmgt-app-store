@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-soulseek
 category: media
 name: Soulseek
-version: "1.0.9"
+version: "1.0.2"
 tagline: Bring your music to umbrel
 description: >-
   Add your app's description here.
@@ -17,8 +17,8 @@ gallery:
 - 1.jpg
 - 2.jpg
 path: ""
-defaultUsername: "slskd"
-defaultPassword: "slskd"
+defaultUsername: ""
+defaultPassword: ""
 releaseNotes: >-
   - Initial launch
 torOnly: false
