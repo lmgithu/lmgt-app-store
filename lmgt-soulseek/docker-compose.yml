@@ -3,12 +3,12 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: lmgt-soulseek
+      APP_HOST: lmgt_soulseek_1
       APP_PORT: 5030
 
   soulseek:
     image: slskd/slskd:latest
-    container_name: lmgt-soulseek
+    container_name: lmgt_soulseek_1
     restart: on-failure
     expose:
       - 5030
