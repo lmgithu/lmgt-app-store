@@ -3,11 +3,16 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: ${APP_ID}_soulseek_1
+      APP_HOST: slskd
       APP_PORT: 5030
+    container_name: slskd_app_proxy
 
   slskd:
     image: slskd/slskd:latest
+    container_name: slskd
+    cap_add:
+    - NET_ADMIN
+    - SYS_MODULE
     restart: on-failure
     expose:
       - 5030
