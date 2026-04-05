@@ -8,6 +8,7 @@ services:
     container_name: lmgt-slskd_app_proxy_1
   web:
     image: slskd/slskd:latest
+    user: "1000:1000"
     restart: on-failure
     ports:
       - '5031:5031'
