@@ -3,7 +3,6 @@ services:
    environment:
     APP_HOST: lmgt-soulseek
     APP_PORT: 5030
-  container_name: lmgt-soulseek_app_proxy_1
   
   lmgt-soulseek:
     image: slskd/slskd:latest
