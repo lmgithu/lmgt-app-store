@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   app_proxy:
@@ -8,11 +8,14 @@ services:
 
   slskd:
     image: slskd/slskd:latest
-    container_name: slskd
+    restart: on-failure
     expose:
       - 5030
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
+      - SLSKD_DOWNLOADS_DIR=/content/downloads
+      - SLSKD_INCOMPLETE_DIR=/content/incomplete
+      - SLSKD_CONFIG=/config
       - PUID=1000
       - PGID=1000
       - UMASK=0002
@@ -22,4 +25,3 @@ services:
       - ${UMBREL_ROOT}/home/Downloads/incomplete:/content/incomplete
       - ${UMBREL_ROOT}/home/Downloads/complete:/content/downloads
       - ${UMBREL_ROOT}/home/Downloads/music:/content/music:ro
-    restart: on-failure
