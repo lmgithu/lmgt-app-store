@@ -19,20 +19,18 @@ services:
 
   web:
     image: slskd/slskd:latest
-    user: "1000:1000"          # ← this is the correct method
+    user: "1000:1000"
     restart: on-failure
     depends_on:
       permissions:
         condition: service_completed_successfully
     ports:
-      - '5031:5031'
-      - '50300:50300'
+      - '5031:5031'   # HTTPS
+      - '50300:50300' # Soulseek
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
       - SLSKD_UMASK=0002
-      # ← REMOVE these two lines completely:
-      # - PUID=1000
-      # - PGID=1000
+      # NO PUID/PGID here!
     volumes:
       - ${APP_DATA_DIR}/data:/app
       - /home/umbrel/umbrel/home/Downloads/complete:/complete
