@@ -5,16 +5,18 @@ services:
       APP_HOST: lmgt-slskd_web_1
       APP_PORT: 5030
     container_name: lmgt-slskd_app_proxy_1
+
   permissions:
     image: alpine:latest
     user: "0:0"
     restart: "no"
     volumes:
-      - ${APP_DATA_DIR}/data:/app   # ← only this one
+      - ${APP_DATA_DIR}/data:/app
     command: >
-      sh -c "chown -R 1000:1000 /app && 
-             chmod -R 755 /app && 
+      sh -c "chown -R 1000:1000 /app &&
+             chmod -R 755 /app &&
              echo 'Permissions fixed for slskd data folder'"
+
   web:
     image: slskd/slskd:latest
     user: "1000:1000"
@@ -28,8 +30,7 @@ services:
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
       - SLSKD_UMASK=0002
-      - PUID=1000
-      - PGID=1000
+      # PUID and PGID removed — they conflict with user: 1000:1000
     volumes:
       - ${APP_DATA_DIR}/data:/app
       - /home/umbrel/umbrel/home/Downloads/complete:/complete

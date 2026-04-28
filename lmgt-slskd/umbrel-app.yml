@@ -4,7 +4,7 @@ name: Soulseek
 tagline: A modern client-server application for the Soulseek file sharing network
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-slskd/logo.png
 category: media
-version: "1.0.8"
+version: "1.0.25"
 port: 5030
 description: >-
   slskd is a self-hosted client-server application designed for the Soulseek file-sharing network. It is implemented in C# and distributed under the AGPL-3.0 license. Unlike the traditional Soulseek client, slskd is structured as a daemon that can run on various platforms, including Linux, and provides a modern, web-based user interface accessible through a web browser. This approach allows users to interact with the Soulseek network without relying on the official client while maintaining the ability to search for, download, and share files.
