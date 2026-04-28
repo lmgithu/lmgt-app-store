@@ -1,9 +1,10 @@
+version: "3.7"
 services:
   app_proxy:
-  environment:
-    APP_HOST: lmgt-roon  
-    APP_PORT: 9330
-  container_name: lmgt-roon_app_proxy_1
+    environment:
+      APP_HOST: lmgt-roon
+      APP_PORT: 9330          # This is the main Roon control/API port
+    container_name: lmgt-roon_app_proxy_1
 
   roon-server:
     image: elgeeko/roon-server:latest
