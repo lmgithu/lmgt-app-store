@@ -1,13 +1,4 @@
-version: "3.7"
 services:
-  app_proxy:
-    environment:
-      APP_HOST: lmgt-roon
-      APP_PORT: 9330
-      PROXY_AUTH_ADD: "true"
-      PROXY_TRUST_UPSTREAM: "true"
-    container_name: lmgt-roon_app_proxy_1
-
   roon-server:
     image: elgeeko/roon-server:latest
     container_name: lmgt-roon
