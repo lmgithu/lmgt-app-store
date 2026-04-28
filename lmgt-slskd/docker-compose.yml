@@ -19,7 +19,7 @@ services:
 
   web:
     image: slskd/slskd:latest
-    user: "1000:1000"
+    user: "1000:1000"          # ← this is the correct method
     restart: on-failure
     depends_on:
       permissions:
@@ -30,7 +30,9 @@ services:
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
       - SLSKD_UMASK=0002
-      # PUID and PGID removed — they conflict with user: 1000:1000
+      # ← REMOVE these two lines completely:
+      # - PUID=1000
+      # - PGID=1000
     volumes:
       - ${APP_DATA_DIR}/data:/app
       - /home/umbrel/umbrel/home/Downloads/complete:/complete
