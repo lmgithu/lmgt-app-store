@@ -1,18 +1,17 @@
 services:
   roon-server:
-    image: elgeeko/roon-server:latest
+    image: ghcr.io/roonlabs/roonserver:latest
     container_name: lmgt-roon
     restart: unless-stopped
     network_mode: host
     environment:
       - TZ=Europe/Budapest
+      - ROON_INSTALL_BRANCH=production
     volumes:
-      - roon-config:/opt/RoonServer
-      - roon-cache:/var/roon
+      - roon-config:/Roon
       - /home/umbrel/umbrel/home/Downloads/music:/music:ro
       - /home/umbrel/umbrel/home/Backups:/backups
     user: "1000:1000"
 
 volumes:
   roon-config:
-  roon-cache:
