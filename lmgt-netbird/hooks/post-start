@@ -11,7 +11,7 @@ echo "Waiting for NetBird container to start and checking status..."
 # Wait up to 30 seconds for the container to start and logs to be available
 for attempt in $(seq 1 300); do
     # Get logs from the netbird app container
-    LOGS=$(docker logs netbird_app_1 2>/dev/null | tail -n 50 || echo "")
+    LOGS=$(docker logs lmgt-netbird_app_1 2>/dev/null | tail -n 50 || echo "")
     
     if echo "${LOGS}" | grep -q "Already connected"; then
         # Container is already connected
