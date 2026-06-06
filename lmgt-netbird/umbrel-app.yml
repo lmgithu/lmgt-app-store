@@ -3,7 +3,7 @@ id: lmgt-netbird
 name: NetBird
 tagline: An adaptive client for Zero Trust Networking
 category: networking
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-netbird/icon.png 
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-netbird/logo.png 
 version: "0.72.2"
 port: 8479
 description: >-
