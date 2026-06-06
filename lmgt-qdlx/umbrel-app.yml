@@ -1,0 +1,15 @@
+name: QobuzDLX
+id: lmgt-qobuzdlx
+version: "1.0.0"
+repo: https://github.com/thimble9057/qobuzdlx.web  # or your fork
+support: https://github.com/thimble9057/qobuzdlx.web/issues
+category: media
+tagline: Qobuzdlx
+description: >-
+  Qobuzdlx
+developer: thimble9057
+website: https://github.com/thimble9057/qobuzdlx.web
+submitter: lmgt
+submission: https://github.com/yourusername/your-repo
+icon:  https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-qdlx/icon.png # Add a nice icon later
+releaseNotes: Initial Umbrel packaging

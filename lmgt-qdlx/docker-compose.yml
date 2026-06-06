@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  app_proxy:
+	environment:
+	  APP_HOST: lmgt-qobuzdlx_web_1
+	  APP_PORT: 8080
+	container_name: lmgt-qobuzdlx_app_proxy_1
+	restart: on-failure
+	networks:
+	  - umbrel-main
+
+  web:
+	image: thimble9057/qobuzdlx.web:latest
+	user: "1000:1000"
+	restart: unless-stopped
+	depends_on:
+	  permissions:
+		condition: service_completed_successfully
+	ports:
+	  - "8082:8080"
+	environment:
+	  - UMASK=002
+	volumes:
+	  - /home/umbrel/umbrel/home/Downloads/complete:/downloads
+	  - ${APP_DATA_DIR}/data/config:/config
+	container_name: lmgt-qobuzdlx_web_1
+	networks:
+	  - umbrel-main
