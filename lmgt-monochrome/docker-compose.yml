@@ -1,11 +1,5 @@
 version: "3.7"
-services:
-  app_proxy:
-    environment:
-      APP_HOST: lmgt-monochrome_web_1
-      APP_PORT: 4173
-
-  web:
+  monochrome:
     build:
       context: https://github.com/monochrome-music/monochrome.git#main  # Or point to your fork
       dockerfile: docker/Dockerfile
@@ -14,7 +8,6 @@ services:
         - APPWRITE_ENDPOINT=
         - APPWRITE_PROJECT_ID=
         - SESSION_MAX_AGE=31536000
-    container_name: lmgt-monochrome_web_1
     restart: unless-stopped
     stop_grace_period: 1m
     healthcheck:
