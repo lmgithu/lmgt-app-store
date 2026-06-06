@@ -1,15 +1,23 @@
-name: QobuzDLX
+manifestVersion: 1
 id: lmgt-qobuzdlx
-version: "1.0.0"
-repo: https://github.com/thimble9057/qobuzdlx.web  # or your fork
-support: https://github.com/thimble9057/qobuzdlx.web/issues
 category: media
+name: QDLX 
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-qdlx/icon.png  
+version: "1.0.0"
 tagline: Qobuzdlx
 description: >-
-  Qobuzdlx
+  Qobuzdlx server
 developer: thimble9057
 website: https://github.com/thimble9057/qobuzdlx.web
-submitter: lmgt
-submission: https://github.com/yourusername/your-repo
-icon:  https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-qdlx/icon.png # Add a nice icon later
-releaseNotes: Initial Umbrel packaging
+dependencies: []
+repo: https://github.com/thimble9057/qobuzdlx.web
+support: https://github.com/thimble9057/qobuzdlx.web  
+port: 8080   
+gallery:
+  - 1.jpg 
+  - 2.jpg
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  First release for Qdlx. Uses thimble9057's repo. 
