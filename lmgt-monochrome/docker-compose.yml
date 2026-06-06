@@ -2,9 +2,8 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: monochrome_web_1
+      APP_HOST: lmgt-monochrome_web_1
       APP_PORT: 4173
-    container_name: lmgt-monochrome_app_proxy_1
 
   web:
     build:
