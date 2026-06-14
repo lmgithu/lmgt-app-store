@@ -5,7 +5,13 @@ services:
     image: lscr.io/linuxserver/tvheadend:latest
     container_name: lmgt-tvheadend
     restart: unless-stopped
+<<<<<<< HEAD
     network_mode: host         
+=======
+    ports:
+      - "9981:9981"
+      - "9982:9982"
+>>>>>>> main
     environment:
       - PUID=1000
       - PGID=1000
