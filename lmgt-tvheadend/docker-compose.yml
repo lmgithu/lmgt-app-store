@@ -11,10 +11,9 @@ services:
     image: lscr.io/linuxserver/tvheadend:latest
     container_name: lmgt-tvheadend_web_1
     restart: unless-stopped
-    # network_mode: host        # ← most hagyjuk ki, hogy a proxy működjön
     ports:
-      - "9981:9981"   # Web UI
-      - "9982:9982"   # HTSP
+      - "9981:9981"
+      - "9982:9982"
     environment:
       - PUID=1000
       - PGID=1000
