@@ -4,7 +4,7 @@ name: TVHeadend
 tagline: TV streaming server
 category: media
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-tvheadend/logo.png
-version: "0.0.1"
+version: "0.0.2"
 port: 9981
 description: >-
   Tvheadend server.
