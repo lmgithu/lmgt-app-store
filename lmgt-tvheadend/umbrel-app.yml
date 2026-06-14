@@ -1,6 +1,6 @@
 manifestVersion: 1
 id: lmgt-tvheadend
-name: TVHeadend (Slave)
+name: TVHeadend
 tagline: TV streaming server
 category: media
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-tvheadend/logo.png
