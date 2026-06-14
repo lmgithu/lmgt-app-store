@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: lmgt-tvheadend
+name: TVHeadend (Slave)
+tagline: TV streaming server (SAT>IP slave)
+category: media
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-tvheadend/logo.png
+version: "0.0.1"
+port: 9981
+description: >-
+  Tvheadend server.
+developer: tvheadend
+website: https://tvheadend.org/
+submission: 
+repo: https://github.com/linuxserver/docker-tvheadend
+support: https://github.com/linuxserver/docker-tvheadend/issues
+gallery:
+  - 1.jpg
+  - 2.jpg
+releaseNotes: >-
+  First release for Tvheadend.
+dependencies: []
+path: ""
+defaultUsername: admin
+defaultPassword: admin
