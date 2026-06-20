@@ -1,7 +1,7 @@
 services:
   roon-now-playing:
     image: ghcr.io/arthursoares/roon-now-playing:latest
-    container_name: roon-now-playing
+    container_name: lmgt-roon-now-playing
     restart: unless-stopped
     ports:
       - "3000:3000"

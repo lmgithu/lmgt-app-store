@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: roon-now-playing
+id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png  
