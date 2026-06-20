@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v3
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.jpg?v4
 version: "0.0.1"
 tagline: Always-on Roon album art display
 description: >-
