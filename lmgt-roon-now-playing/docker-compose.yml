@@ -4,7 +4,7 @@ services:
     container_name: lmgt-roon-now-playing
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - ./config:/app/config
       - ./cache:/app/cache
