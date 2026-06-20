@@ -18,8 +18,6 @@ path: "/admin/"
 gallery:
   - 1.jpg
   - 2.jpg
-path: ""
-defaultPassword: ""
 releaseNotes: >-
   Initial Umbrel packaging of Roon Now Playing.
   Lightweight web-based always-on display with excellent Roon integration.
