@@ -1,9 +1,9 @@
 manifestVersion: 1
-id: lmgt-roon-now-playing
+id: lmgt-roonnp
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v5
-version: "0.0.2"
+version: "0.0.3"
 tagline: Always-on Roon album art display
 description: >-
   A beautiful, always-on display for Roon that shows real-time album art, track information, and more.
@@ -13,7 +13,7 @@ website: https://github.com/arthursoares/roon-now-playing
 dependencies: []
 repo: https://github.com/arthursoares/roon-now-playing
 support: https://github.com/arthursoares/roon-now-playing/issues
-port: 3001
+port: 3000
 path: "/admin/"
 gallery:
   - 1.jpg

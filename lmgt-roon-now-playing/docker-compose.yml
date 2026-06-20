@@ -1,10 +1,14 @@
 services:
-  roon-now-playing:
+  app_proxy:
+   environment:
+     APP_HOST: ${APP_ID}_roonnp_1
+     APP_PORT: 3000
+
+  roonnp:
     image: ghcr.io/arthursoares/roon-now-playing:latest
-    container_name: lmgt-roon-now-playing
     restart: unless-stopped
     ports:
-      - "3001:3000" #port change
+      - "3000:3000" #port change
     volumes:
       - ./config:/app/config
       - ./cache:/app/cache
