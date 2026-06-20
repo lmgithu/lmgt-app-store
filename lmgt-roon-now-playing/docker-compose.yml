@@ -7,8 +7,6 @@ services:
   roon-now-playing:
     image: ghcr.io/arthursoares/roon-now-playing:latest
     restart: unless-stopped
-    ports:
-      - "3000:3000" #port change
     volumes:
       - ./config:/app/config
       - ./cache:/app/cache
