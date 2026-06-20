@@ -1,9 +1,9 @@
 services:
   app_proxy:
-  environment:
-    APP_HOST: lmgt-roon-now-playing_web_1
-    APP_PORT: 5030
-  container_name: lmgt-roon-now-playing_app_proxy_1
+    environment:
+      APP_HOST: lmgt-roon-now-playing_web_1
+      APP_PORT: 5030
+    container_name: lmgt-roon-now-playing_app_proxy_1
   
   web:
     image: ghcr.io/arthursoares/roon-now-playing:latest
