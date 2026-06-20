@@ -1,10 +1,10 @@
 services:
   app_proxy:
    environment:
-     APP_HOST: ${APP_ID}_roonnp_1
+     APP_HOST: ${APP_ID}_roon-now-playing_1
      APP_PORT: 3000
 
-  roonnp:
+  roon-now-playing:
     image: ghcr.io/arthursoares/roon-now-playing:latest
     restart: unless-stopped
     ports:
