@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-torrserver
 name: TorrServer
 tagline: A torrent streaming server
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-torrserver/icon.svg
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-torrserver/icon.png
 category: networking
 version: "MatriX:Latest"
 port: 5665
