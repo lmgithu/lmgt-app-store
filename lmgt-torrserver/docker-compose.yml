@@ -4,7 +4,7 @@ services:
     environment:
       APP_HOST: lmgt-torrserver_app_1
       APP_PORT: 5665
-      PROXY_AUTH_ADD: 'true'
+      PROXY_AUTH_ADD: 'false'
     container_name: lmgt-torrserver_app_proxy_1
   app:
     image: ghcr.io/yourok/torrserver:latest
