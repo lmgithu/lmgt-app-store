@@ -3,13 +3,13 @@ services:
   app_proxy:
     environment:
       APP_HOST: lmgt-torrserver_app_1
-      APP_PORT: 5665
+      APP_PORT: 5667
       PROXY_AUTH_ADD: 'false'
     container_name: lmgt-torrserver_app_proxy_1
   app:
     image: ghcr.io/yourok/torrserver:latest
     environment:
-      TS_PORT: '5665'
+      TS_PORT: '5667'
       TS_DONTKILL: '1'
       TS_HTTPAUTH: '0'
       TS_CONF_PATH: /opt/ts/config
