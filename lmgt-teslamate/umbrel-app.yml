@@ -2,11 +2,10 @@ manifestVersion: 1
 id: lmgt-teslamate
 category: automotive             
 name: TeslaMate
-version: "4.0.1-v1"                
+version: "1.0.0"                
 tagline: Open-source self-hosted Tesla data logger
 description: >-
-  TeslaMate logs your Tesla drives, charges, and stats.
-  Supports latest Tesla API changes (as of 2026). Please note this is NOT an official TeslaMate release only a proof of concept that it can be installed on Umbrel too.
+  TeslaMate logs your Tesla drives, charges, and stats and supports the latest Tesla API changes. Please note this is NOT an official TeslaMate release only a proof of concept that it can be installed on Umbrel too.
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslamate/icon.svg
 port: 4000                    
 developer: teslamate-org
@@ -20,7 +19,7 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Updated to TeslaMate v4.0.1 (latest stable as of 12 July 2026).
+  Updated to TeslaMate :latest.
   TeslaMateApi service integration via port 5500.
 torOnly: false
 release: ""
