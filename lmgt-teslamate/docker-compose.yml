@@ -65,7 +65,6 @@ services:
       - ENCRYPTION_KEY=${APP_SEED}
       - MQTT_HOST=mosquitto
       - TZ=Europe/Berlin
-      - API_ACCESS_KEY=AKhP0cm7SjrtOWn7
-      - API_SECRET_KEY=SKQzgRUOYfOaduHrGLyuKIENxKe4CcmA
+      - API_TOKEN=QUtoUDBjbTdTanJ0T1duNzpTS1F6Z1JVT1lmT2FkdUhyR0x5dUtJRU54S2U0Q2NtQQ==
     ports:
       - 5500:8080
