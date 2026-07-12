@@ -20,7 +20,7 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Updated to TeslaMate v3.0.0 (latest stable as of March 2026).
+  Updated to TeslaMate v4.0.1 (latest stable as of 12 July 2026).
   TeslaMateApi service integration via port 5500.
 torOnly: false
 release: ""
