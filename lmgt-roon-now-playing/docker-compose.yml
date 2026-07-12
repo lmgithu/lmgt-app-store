@@ -5,7 +5,7 @@ services:
      APP_PORT: 3000
 
   roon-now-playing:
-    image: arthursoares/roon-now-playing:latest
+    image: ghcr.io/arthursoares/roon-now-playing:latest
     restart: unless-stopped
     volumes:
       - ./config:/app/config
