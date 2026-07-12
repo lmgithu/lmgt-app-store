@@ -42,19 +42,6 @@ services:
       retries: 5
       start_period: 30s
 
-  grafana:
-    image: teslamate/grafana:latest
-    restart: on-failure
-    environment:
-      DATABASE_USER: teslamate
-      DATABASE_PASS: ${APP_PASSWORD}
-      DATABASE_NAME: teslamate
-      DATABASE_HOST: database
-    volumes:
-      - ${APP_DATA_DIR}/grafana:/var/lib/grafana
-    depends_on:
-      - database
-
   mosquitto:
     image: eclipse-mosquitto:2
     restart: on-failure
