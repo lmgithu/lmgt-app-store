@@ -64,17 +64,21 @@ services:
       - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
       
   teslamateapi:
-    image: tobiasehlert/teslamateapi:latest
-    restart: always
+    image: mytesla/teslamateapi:latest
+    restart: unless-stopped
     depends_on:
       - database
+      - teslamate
+      - mosquitto
     environment:
-      ENCRYPTION_KEY: ${APP_SEED}      
-      DATABASE_USER: teslamate
-      DATABASE_PASS: ${APP_PASSWORD} 
-      DATABASE_NAME: teslamate
-      DATABASE_HOST: database
-      MQTT_HOST: mosquitto
-      TZ: Europe/Berlin
+      - DATABASE_USER=teslamate
+      - DATABASE_PASS=${APP_PASSWORD}
+      - DATABASE_NAME=teslamate
+      - DATABASE_HOST=database
+      - ENCRYPTION_KEY=${APP_SEED}
+      - MQTT_HOST=mosquitto
+      - TZ=Europe/Berlin
+      - API_ACCESS_KEY=
+      - API_SECRET_KEY=
     ports:
       - 5500:8080
