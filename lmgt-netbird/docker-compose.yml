@@ -18,8 +18,6 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     network_mode: host
-    environment:
-    - NB_DNS_PROXY=false
     volumes:
       - ${APP_DATA_DIR}/data/app_data:/var/lib/netbird:rw
     container_name: lmgt-netbird_app_1
