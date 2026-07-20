@@ -18,7 +18,7 @@ services:
              echo 'Permissions fixed for slskd data folder'"
 
   web:
-    image: slskd/slskd:latest
+    image: slskd/slskd:0.26.0
     user: "1000:1000"
     restart: on-failure
     depends_on:
