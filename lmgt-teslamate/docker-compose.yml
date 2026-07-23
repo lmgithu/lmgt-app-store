@@ -51,7 +51,7 @@ services:
       - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
       
   teslamateapi:
-    image: mytesla/teslamateapi:latest
+    image: mytesla/teslamateapi:v2.7
     restart: unless-stopped
     depends_on:
       - database
