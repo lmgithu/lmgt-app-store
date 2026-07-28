@@ -3,21 +3,25 @@ id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v5
-version: "1.0.1"
-tagline: Always-on Roon album art display
+version: "1.9.1"
+tagline: Always-on Roon album art display with AI facts
 description: >-
-  A beautiful, always-on display for Roon that shows real-time album art, track information, and more.
+  A beautiful, always-on display for Roon that shows real-time album art, track information, and AI-generated interesting facts.
   Perfect for a dedicated screen or kiosk next to your HiFi setup.
-developer: Arthur Soares
-website: https://github.com/arthursoares/roon-now-playing
+
+
+  This package uses a hardened fork (lmgithu/roon-now-playing) with more reliable fact generation:
+  tolerant LLM JSON parsing, higher default token limits (configurable), longer facts cache, and no Umbrel app_proxy so you can open the app directly on port 3000.
+developer: Arthur Soares / LMGT fork
+website: https://github.com/lmgithu/roon-now-playing
 dependencies: []
-repo: https://github.com/arthursoares/roon-now-playing
-support: https://github.com/arthursoares/roon-now-playing/issues
+repo: https://github.com/lmgithu/roon-now-playing
+support: https://github.com/lmgithu/roon-now-playing/issues
 port: 3000
 path: "/admin/"
 gallery:
   - 1.jpg
   - 2.jpg
 releaseNotes: >-
-  Initial Umbrel packaging of Roon Now Playing.
-  Lightweight web-based always-on display with excellent Roon integration.
+  v1.9.1 (LMGT fork): Fix intermittent missing AI facts (JSON parse + token limits),
+  longer cache, request coalescing, direct port 3000 access without Umbrel app_proxy.
