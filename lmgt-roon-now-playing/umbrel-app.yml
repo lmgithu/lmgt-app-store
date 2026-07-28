@@ -10,18 +10,16 @@ description: >-
   Perfect for a dedicated screen or kiosk next to your HiFi setup.
 
 
-  This package uses a hardened fork (lmgithu/roon-now-playing) with more reliable fact generation:
-  tolerant LLM JSON parsing, higher default token limits (configurable), longer facts cache, and no Umbrel app_proxy so you can open the app directly on port 3000.
-developer: Arthur Soares / LMGT fork
+  Uses the LMGT fork of Roon Now Playing with more reliable AI facts (JSON parsing, token limits, longer cache).
+  Access directly on port 3000 (no Umbrel app proxy): http://umbrel.local:3000 — admin at /admin/.
+developer: Arthur Soares / LMGT
 website: https://github.com/lmgithu/roon-now-playing
 dependencies: []
 repo: https://github.com/lmgithu/roon-now-playing
 support: https://github.com/lmgithu/roon-now-playing/issues
 port: 3000
 path: "/admin/"
-gallery:
-  - 1.jpg
-  - 2.jpg
+gallery: []
 releaseNotes: >-
-  v1.9.1 (LMGT fork): Fix intermittent missing AI facts (JSON parse + token limits),
-  longer cache, request coalescing, direct port 3000 access without Umbrel app_proxy.
+  v1.9.1 (LMGT fork): Fix missing AI facts, longer cache, direct port 3000 access.
+  Image: ghcr.io/lmgithu/roon-now-playing:latest
