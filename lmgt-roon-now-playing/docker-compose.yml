@@ -1,26 +1,12 @@
 services:
-  # app_proxy removed — access directly at http://<umbrel-ip>:3000
-  # (also works for tablets/kiosks that cannot use the Umbrel reverse proxy)
-
   roon-now-playing:
     image: ghcr.io/lmgithu/roon-now-playing:1.9.1
     restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
-      - ${APP_DATA_DIR}/config:/app/config
-      - ${APP_DATA_DIR}/cache:/app/cache
+      - ./config:/app/config
+      - ./cache:/app/cache
     environment:
       - PORT=3000
-      - HOST=0.0.0.0
-      - LOG_LEVEL=info
-      - NODE_ENV=production
-      # Facts cache: 30 days default; set to 0 to never expire pre-generated facts
       - FACTS_CACHE_TTL_HOURS=720
-      # Optional: set API keys here or configure them in the admin UI
-      # - OPENROUTER_API_KEY=
-      # - OPENAI_API_KEY=
-      # - ANTHROPIC_API_KEY=
-      # - LOCAL_LLM_URL=http://host.docker.internal:11434/v1
-    # Uncomment for better Roon Core discovery on some networks:
-    # network_mode: host
