@@ -3,7 +3,7 @@ id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v5
-version: "2.0.18"
+version: "2.0.19"
 tagline: Always-on Roon album art display with AI facts
 description: >-
   A beautiful, always-on display for Roon that shows real-time album art, track information, and AI-generated interesting facts.
@@ -21,8 +21,9 @@ port: 3000
 path: "/admin/"
 gallery: []
 releaseNotes: >-
-  v2.0.18: RPi Facts Carousel cover art shadow matches Cover layout (scaled).
-  Image: ghcr.io/lmgithu/roon-now-playing:2.0.18 (or :latest)
+  v2.0.19: RPi Facts Carousel progress bar slightly thinner (~2–3px).
+  Image: ghcr.io/lmgithu/roon-now-playing:2.0.19 (or :latest)
+
 
 
 
