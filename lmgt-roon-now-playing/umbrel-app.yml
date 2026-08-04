@@ -3,7 +3,7 @@ id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v5
-version: "2.0.31"
+version: "2.0.32"
 tagline: Always-on Roon album art display with AI facts
 description: >-
   A beautiful, always-on display for Roon that shows real-time album art, track information, and AI-generated interesting facts.
@@ -21,9 +21,8 @@ port: 3000
 path: "/admin/"
 gallery: []
 releaseNotes: >-
-  v2.0.31: Facts JSON shatter repair + filter prompt/reasoning leaks (Various Artists);
-  homogeneous progress track (no black hairline on colored backgrounds).
-  Image: ghcr.io/lmgithu/roon-now-playing:2.0.31
+  v2.0.32: Status/progress track more prominent on colored backgrounds.
+  Image: ghcr.io/lmgithu/roon-now-playing:2.0.32
 
 
 
