@@ -3,7 +3,7 @@ version: "3.7"
 services:
   # No app_proxy — open directly: http://<umbrel-ip>:3000  (admin: /admin/)
   roon-now-playing:
-    image: ghcr.io/lmgithu/roon-now-playing:2.0.32
+    image: ghcr.io/lmgithu/roon-now-playing:2.0.33
     restart: on-failure
     ports:
       - "3000:3000"
