@@ -3,7 +3,7 @@ id: lmgt-roon-now-playing
 category: media
 name: Roon Now Playing
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon-now-playing/icon.png?v5
-version: "2.0.43"
+version: "2.0.44"
 tagline: Always-on Roon album art display with AI facts
 description: >-
   A beautiful, always-on display for Roon that shows real-time album art, track information, and AI-generated interesting facts.
@@ -21,21 +21,6 @@ port: 3000
 path: "/admin/"
 gallery: []
 releaseNotes: >-
-  v2.0.43: Corner Gradient replaces Radial; Grainy Blur more abstract (heavier
-  blur, zoom, slight rotate). Default Grainy Blur.
-  Image: ghcr.io/lmgithu/roon-now-playing:2.0.43
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  v2.0.44: Grainy Blur is Apple Music–style color mesh + glass (not blurred
+  cover); Radial Gradient restored (center). Light text forced for readability.
+  Image: ghcr.io/lmgithu/roon-now-playing:2.0.44
