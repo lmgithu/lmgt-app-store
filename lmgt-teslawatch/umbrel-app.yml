@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.37"
+version: "1.0.38"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,10 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.37 — smarter, Waze-style alert matching. When navigating, alerts are now
-  matched to your actual route (perpendicular distance to the road path)
-  instead of a compass cone, so parallel roads and the opposite carriageway no
-  longer false-trigger and curves are handled correctly. Without a route, the
-  heading cone adapts to speed (wide in town, narrow on the highway). Fixed
-  cameras that publish a facing direction only alert when you're approaching
-  them, and low-reliability / stale crowd reports can be filtered out.
+  v1.0.38 — new iMessage phone alerts via photon.codes. Alerts can now be
+  delivered as a blue iMessage to your phone, alongside (or instead of) Bark.
+  Enable it in Settings with your photon address, token and destination handle
+  (iMessage only, not SMS/RCS), and tap the test button to send yourself a
+  sample.
