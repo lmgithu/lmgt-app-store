@@ -5,12 +5,6 @@ services:
     environment:
       APP_HOST: lmgt-teslawatch_web_1
       APP_PORT: 3000
-      # Disable Umbrel's built-in login screen for this app. Access is protected
-      # externally (NetBird reverse proxy + password at radar.savvy.hu), so the
-      # Umbrel auth would just be a redundant second gate — and it blocks the
-      # Tesla browser from reaching the app cleanly. Routing stays intact; only
-      # the auth layer is removed. This affects ONLY this app, not TeslaMate.
-      PROXY_AUTH_ADD: "false"
     container_name: lmgt-teslawatch_app_proxy_1
 
   web:
