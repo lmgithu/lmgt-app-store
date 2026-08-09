@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.33"
+version: "1.0.34"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.33 — app is back in the store. Grouped, non-archived Bark alerts with
-  per-type icon + sound, speed-based warning distance (~25-30 s ahead), dual
-  wazeapi accounts, and route-aware prefetch when navigating.
+  v1.0.34 — fix wazeapi: corrected the API host to api.wazeapi.com (requests
+  were hitting the wrong host and failing), and the usage counter now only
+  counts requests that actually reach wazeapi. Added a reset-counter button.
