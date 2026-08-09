@@ -4,7 +4,7 @@ category: automotive
 name: TeslaWatch
 version: "1.0.21"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
   TeslaWatch reads your car's live position from your TeslaMate instance (over
   MQTT), and alerts you to police, speed cameras, hazards and traffic ahead —
