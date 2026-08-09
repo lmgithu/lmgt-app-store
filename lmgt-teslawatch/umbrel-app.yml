@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.23"
+version: "1.0.24"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.23 — refreshed alert icons; removed the per-type test buttons from
-  Settings and made each Hark section icon tappable (opens the image to set as
-  that service's avatar).
+  v1.0.24 — wazeapi monthly limit is now a free-text field (any number) and the
+  daily pacing cap is removed. Tap a phone-alert icon to send a test of that
+  type. New car traffic icon. Tidier Settings (inline TomTom test, collapsible
+  MQTT login, shorter labels).
