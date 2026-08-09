@@ -2,15 +2,15 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.11"
+version: "1.0.12"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
   TeslaWatch reads your car's live position from your TeslaMate instance (over
-  MQTT), pulls police and speed-camera reports from Waze (free live-map feed as
-  the primary source, with optional wazeapi.com enrichment on a strict monthly
-  budget), and adds a worldwide fixed speed-camera database from speedcams.world
-  that you refresh with one tap. It warns you with a sound alert a configurable
+  MQTT), and alerts you to police, speed cameras, hazards and traffic ahead —
+  from TomTom (hazards/accidents/jams), speedcams.world plus official Luxembourg
+  and France radar databases (fixed cameras), and optionally wazeapi.com (police
+  and mobile speed traps). It warns you with a sound alert a configurable
   distance before you reach a report.
 
 
@@ -37,6 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.11 — added an optional app-level password. Set one in Settings → Security
-  and a login page guards the UI, API and live updates on port :3100 (even on
-  the local network). Password is stored hashed; log out from Settings.
+  v1.0.12 — the status/distance readout is now a horizontal bar above the map
+  that fills left→right as you approach the nearest alert (full width = right on
+  top of it), fixing the overlap on the Tesla browser. Removed the direct Waze
+  feed (it was always IP-blocked); police still come from wazeapi.com.
