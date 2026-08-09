@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.25"
+version: "1.0.26"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.25 — smarter wazeapi usage: when your Tesla is navigating, the app now
-  routes via TomTom and fetches every police/alert along the whole trip in a
-  single wazeapi request, reusing it until you leave the route or change
-  destination (then it recomputes). Far fewer wazeapi calls per drive.
+  v1.0.26 — the route prefetch now also refreshes when its data ages past ~15
+  min and you start driving again (e.g. after a lunch or charging stop), so you
+  never set off on stale police reports. Still no API calls while parked.
