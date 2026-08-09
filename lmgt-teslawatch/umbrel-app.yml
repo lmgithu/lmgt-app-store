@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.28"
+version: "1.0.29"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -10,8 +10,8 @@ description: >-
   MQTT), and alerts you to police, speed cameras, hazards and traffic ahead —
   from TomTom (hazards/accidents/jams), speedcams.world plus official Luxembourg
   and France radar databases (fixed cameras), and optionally wazeapi.com (police
-  and mobile speed traps). It warns you a configurable distance before you reach
-  a report.
+  and mobile speed traps). The warning distance scales with your speed, so you
+  get alerted about 20 seconds before you reach a report.
 
 
   Alerts run entirely on the server — no browser needed. Connect the Hark app on
@@ -33,7 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.28 — add a second wazeapi.com account to double your free quota. When
-  account 1 reaches the switch-over limit (default 98) it automatically uses
-  account 2 for the rest of the cycle, resetting on your quota reset day
-  (default the 9th) and switching back to account 1. Per-account usage shown.
+  v1.0.29 — the alert distance is now automatic and speed-based (about 20
+  seconds ahead: ~278 m at 50 km/h, ~500 m at 90 km/h) for every alert type.
+  The manual distance sliders are removed. Applies to notifications, the
+  on-screen bar and the map rings.
