@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.9"
+version: "1.0.10"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,7 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.9 — new "Country databases" settings section with official government
-  radar data for Luxembourg and France (higher accuracy, layered on top of
-  speedcams.world, overlaps de-duped). Added a toggle to turn hazard alerts on/
-  off; when off, the red hazard ring is hidden on the map.
+  v1.0.10 — disabled Umbrel's built-in login for this app (PROXY_AUTH_ADD=false)
+  since access is protected externally at radar.savvy.hu; the Tesla browser can
+  now reach it without the extra Umbrel login. Routing is unchanged and this
+  does not affect TeslaMate.
