@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.30"
+version: "1.0.31"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.30 — switched phone alerts to Bark (free), which plays a distinct SOUND
-  per alert type (police / hazard / traffic) alongside the matching icon — set
-  each sound in Settings. Also increased the speed-based warning distance to
-  ~25-30 seconds ahead (~400 m at 50 km/h, ~720 m at 90 km/h).
+  v1.0.31 — the Bark field now accepts either your device key or the full push
+  URL from the Bark app (https://api.day.app/KEY), so you can paste whichever
+  you have.
