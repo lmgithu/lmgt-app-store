@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.26"
+version: "1.0.27"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.26 — the route prefetch now also refreshes when its data ages past ~15
-  min and you start driving again (e.g. after a lunch or charging stop), so you
-  never set off on stale police reports. Still no API calls while parked.
+  v1.0.27 — cache window is now 30 minutes for both route and tile modes: alert
+  data refreshes about every 30 min while you drive so it stays current, and
+  never refreshes while the car is parked. Fewer calls on long drives.
