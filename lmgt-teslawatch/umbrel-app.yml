@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.10"
+version: "1.0.11"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,7 +37,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.10 — disabled Umbrel's built-in login for this app (PROXY_AUTH_ADD=false)
-  since access is protected externally at radar.savvy.hu; the Tesla browser can
-  now reach it without the extra Umbrel login. Routing is unchanged and this
-  does not affect TeslaMate.
+  v1.0.11 — added an optional app-level password. Set one in Settings → Security
+  and a login page guards the UI, API and live updates on port :3100 (even on
+  the local network). Password is stored hashed; log out from Settings.
