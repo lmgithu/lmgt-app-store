@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.27"
+version: "1.0.28"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.27 — cache window is now 30 minutes for both route and tile modes: alert
-  data refreshes about every 30 min while you drive so it stays current, and
-  never refreshes while the car is parked. Fewer calls on long drives.
+  v1.0.28 — add a second wazeapi.com account to double your free quota. When
+  account 1 reaches the switch-over limit (default 98) it automatically uses
+  account 2 for the rest of the cycle, resetting on your quota reset day
+  (default the 9th) and switching back to account 1. Per-account usage shown.
