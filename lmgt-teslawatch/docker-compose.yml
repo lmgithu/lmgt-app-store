@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: lmgt-teslawatch_web_1
+      APP_PORT: 3000
+    container_name: lmgt-teslawatch_app_proxy_1
+
+  web:
+    image: ghcr.io/lmgithu/teslawatch:latest
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    environment:
+      # Pre-wired to the Mosquitto broker inside your lmgt-teslamate app.
+      # That broker runs with no auth on the default port, so no credentials
+      # are needed. Change these in the app's Settings UI if your setup differs.
+      POSITION_SOURCE: "mqtt"
+      MQTT_HOST: "lmgt-teslamate_mosquitto_1"
+      MQTT_PORT: "1883"
+      TESLAMATE_CAR_ID: "1"
+      # Waze region: 'row' = Europe / rest of world.
+      WAZE_ENV: "row"
+      # Optional wazeapi.com secondary source (leave blank to disable):
+      # WAZEAPI_KEY: "wz_live_..."
+    container_name: lmgt-teslawatch_web_1

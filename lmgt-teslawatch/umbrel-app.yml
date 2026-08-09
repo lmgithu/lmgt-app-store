@@ -1,0 +1,40 @@
+manifestVersion: 1
+id: lmgt-teslawatch
+category: automotive
+name: TeslaWatch
+version: "1.0.0"
+tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
+description: >-
+  TeslaWatch reads your car's live position from your TeslaMate instance (over
+  MQTT), pulls police and speed-camera reports from Waze (free live-map feed as
+  the primary source, with optional wazeapi.com enrichment on a strict monthly
+  budget), and adds a worldwide fixed speed-camera database from speedcams.world
+  that you refresh with one tap. It warns you with a sound alert a configurable
+  distance before you reach a report.
+
+
+  Open the app in your Tesla's browser (reach it from the car via your NetBird
+  app). The UI matches the Tesla cluster: a big approach ring counts down the
+  distance to the nearest alert ahead, with a live map, connectivity status for
+  each data source, and a settings panel where you can test the alert sounds and
+  tune the warning distance.
+
+
+  Two alert sounds: an urgent triple-beep for police & cameras, and a softer
+  chime for hazards, closures and accidents. Pre-wired to the Mosquitto broker
+  in the LMGT TeslaMate app.
+developer: lmgithu
+website: https://github.com/lmgithu/teslawatch
+dependencies:
+  - lmgt-teslamate
+repo: https://github.com/lmgithu/teslawatch
+support: https://github.com/lmgithu/teslawatch/issues
+port: 3000
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  First release. TeslaMate (MQTT) position, Waze live-map + wazeapi.com reports,
+  speedcams.world fixed-camera database, Tesla-styled alerting UI.
