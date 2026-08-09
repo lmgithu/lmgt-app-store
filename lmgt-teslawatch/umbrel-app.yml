@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.20"
+version: "1.0.21"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -33,7 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.20 — phone alerts now use Hark with a separate webhook per alert type
-  (police / hazard / traffic), each with its own icon and sound so you can tell
-  them apart at a glance and by ear. Set the three webhooks in Settings; app
-  ships matching icons to use as each Hark service avatar.
+  v1.0.21 — per-type alert toggles: turn Police & cameras, Hazards, and Traffic
+  on/off independently in Settings. Each toggle applies everywhere — phone
+  notifications, the on-screen bar, and the map rings/markers.
