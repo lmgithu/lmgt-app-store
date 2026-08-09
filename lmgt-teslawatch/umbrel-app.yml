@@ -4,6 +4,7 @@ category: automotive
 name: TeslaWatch
 version: "1.0.0"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
   TeslaWatch reads your car's live position from your TeslaMate instance (over
   MQTT), pulls police and speed-camera reports from Waze (free live-map feed as
