@@ -30,7 +30,7 @@ dependencies:
   - lmgt-teslamate
 repo: https://github.com/lmgithu/teslawatch
 support: https://github.com/lmgithu/teslawatch/issues
-port: 3000
+port: 3100
 gallery: []
 path: ""
 defaultUsername: ""
