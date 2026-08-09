@@ -33,6 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.21 — per-type alert toggles: turn Police & cameras, Hazards, and Traffic
-  on/off independently in Settings. Each toggle applies everywhere — phone
-  notifications, the on-screen bar, and the map rings/markers.
+  v1.0.22 — the Test button now sends a notification identical to a real alert
+  ("Police ahead" / "600 m ahead · A1 near Kirchberg") instead of placeholder
+  text, so you preview the final look.
