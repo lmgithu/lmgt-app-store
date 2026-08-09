@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.2"
+version: "1.0.3"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,6 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.2 — clearer Waze settings: wazeapi.com key is the primary live source and
-  is now clearly required; direct-feed test relabelled as optional; minor status
-  text fixes.
+  v1.0.3 — map improvements: car marker moves + points to heading; alert-radius
+  rings (per category) shown on the map and update live as you drag the sliders;
+  new color scheme (police/camera blue, hazard red, traffic yellow) everywhere;
+  cleaner minimal line-icons instead of emoji.
