@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.3"
+version: "1.0.4"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,7 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.3 — map improvements: car marker moves + points to heading; alert-radius
-  rings (per category) shown on the map and update live as you drag the sliders;
-  new color scheme (police/camera blue, hazard red, traffic yellow) everywhere;
-  cleaner minimal line-icons instead of emoji.
+  v1.0.4 — added TomTom Traffic as the main live source for hazards, accidents,
+  road closures/works and jams (free 2500/month, drive-gated + paced). wazeapi
+  now used only for police + speed traps; fixed cameras from speedcams.world.
+  Traffic jams show on the map but don't beep. Add your TomTom key in Settings.
