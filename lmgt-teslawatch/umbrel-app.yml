@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.19"
+version: "1.0.20"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -14,9 +14,10 @@ description: >-
   a report.
 
 
-  Alerts run entirely on the server — no browser needed. Connect the PushWard
-  app on your iPhone and you get a time-sensitive notification as you approach ("Police ahead · 400 m") that
-  wakes the lock screen and plays a sound, even while you listen to music. A clean web dashboard (a top
+  Alerts run entirely on the server — no browser needed. Connect the Hark app on
+  your iPhone with a separate webhook per alert type, so police, hazards and
+  traffic each get their own icon and sound — you know what it is by look and
+  by ear, even while you listen to music. A clean web dashboard (a top
   approach bar over a dark navigation map) is available for setup and live
   viewing. Pre-wired to the Mosquitto broker in the LMGT TeslaMate app.
 developer: lmgithu
@@ -32,8 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.19 — switched phone alerts from Live Activities to time-sensitive push
-  notifications (PushWard). These reliably wake the locked screen and play a
-  sound as you approach police/cameras/hazards — more dependable than the Live
-  Activity, which did not show on all phones. Allow Time-Sensitive notifications
-  for PushWard in iOS Settings.
+  v1.0.20 — phone alerts now use Hark with a separate webhook per alert type
+  (police / hazard / traffic), each with its own icon and sound so you can tell
+  them apart at a glance and by ear. Set the three webhooks in Settings; app
+  ships matching icons to use as each Hark service avatar.
