@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.38"
+version: "1.0.39"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,8 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.38 — new iMessage phone alerts via photon.codes. Alerts can now be
-  delivered as a blue iMessage to your phone, alongside (or instead of) Bark.
-  Enable it in Settings with your photon address, token and destination handle
-  (iMessage only, not SMS/RCS), and tap the test button to send yourself a
-  sample.
+  v1.0.39 — iMessage phone alerts via photon.codes (works on the free plan).
+  Alerts can be delivered as a blue iMessage to your phone, alongside (or
+  instead of) Bark. Enable it in Settings with your photon project ID + secret
+  and your phone number / Apple ID, then tap the test button. iMessage only
+  (not SMS/RCS). Verified live end-to-end.
