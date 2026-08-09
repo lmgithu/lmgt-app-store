@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.14"
+version: "1.0.15"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -14,9 +14,9 @@ description: >-
   a report.
 
 
-  Alerts run entirely on the server — no browser needed. Connect the Hark app on
-  your iPhone and you get a live-updating iOS Live Activity as you approach
-  ("Police ahead", a progress bar filling to 100%), on the lock screen and
+  Alerts run entirely on the server — no browser needed. Connect the PushWard
+  app on your iPhone and you get a live-updating iOS Live Activity as you
+  approach ("Police ahead", a gauge filling to 100%), on the lock screen and
   Dynamic Island, even while you listen to music. A clean web dashboard (a top
   approach bar over a dark navigation map) is available for setup and live
   viewing. Pre-wired to the Mosquitto broker in the LMGT TeslaMate app.
@@ -33,8 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.14 — switched notifications to Hark iOS Live Activities: a single
-  live-updating activity whose progress bar fills as you approach (blue for
-  police/cameras, red for hazards), on the lock screen & Dynamic Island. Set
-  your Hark webhook in Settings and use the test button. Removed the app
-  password and re-enabled Umbrel's app proxy (this UI is admin-only now).
+  v1.0.15 — switched Live Activities to PushWard (free plan includes them, no
+  Pro needed). A single live-updating activity's gauge fills as you approach,
+  with SF Symbol icons (shield/camera/triangle) and color by category (blue
+  police/cameras, red hazards). Paste your PushWard key in Settings and use the
+  test button.
