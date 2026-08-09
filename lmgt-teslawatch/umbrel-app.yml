@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.0"
+version: "1.0.1"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,5 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  First release. TeslaMate (MQTT) position, Waze live-map + wazeapi.com reports,
-  speedcams.world fixed-camera database, Tesla-styled alerting UI.
+  v1.0.1 — wazeapi.com is now the primary live Waze source (drive-gated,
+  daily-paced to fit the free 100/month tier); all reports drawn on the map with
+  per-type colors + legend; TeslaMate status distinguishes "asleep" from
+  "disconnected"; Europe-only region; Waze live-feed diagnostic in Settings.
