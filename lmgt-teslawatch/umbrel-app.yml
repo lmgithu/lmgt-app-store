@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.8"
+version: "1.0.9"
 tagline: Sound alerts for police & speed cameras ahead, in your Tesla browser
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -37,7 +37,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.8 — reverted the map to the faster Leaflet + CARTO dark tiles: alert
-  markers are clickable again (popup shows type/street/source), radius rings
-  reflect the sliders live, and the map opens on the car's last known position
-  (not Paris). More zoomed-in default; whiter, more prominent car pulse.
+  v1.0.9 — new "Country databases" settings section with official government
+  radar data for Luxembourg and France (higher accuracy, layered on top of
+  speedcams.world, overlaps de-duped). Added a toggle to turn hazard alerts on/
+  off; when off, the red hazard ring is hidden on the map.
