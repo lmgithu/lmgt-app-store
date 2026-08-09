@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.17"
+version: "1.0.18"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -33,7 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.17 — Live Activity now uses a clean linear progress bar (generic
-  template) that fills as the distance counts down toward the alert. Removed
-  the "enable sound" start screen (loads straight in) and the redundant km/h
-  readout.
+  v1.0.18 — hotfix: v1.0.17 called startup before the map variables were
+  initialized, which threw and left the whole UI dead (blank status bar, map
+  not following, settings not opening). Startup now runs last. Fully working
+  again.
