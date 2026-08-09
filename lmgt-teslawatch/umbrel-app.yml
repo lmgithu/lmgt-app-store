@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.35"
+version: "1.0.36"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.35 — TomTom usage counter now only counts requests that actually reach
-  TomTom (network failures no longer inflate it). Use Settings -> Test TomTom
-  key to confirm the key works; TomTom is otherwise only called while driving.
+  v1.0.36 — fixed route-mode: TomTom returns the encoded polyline as a string,
+  which the app was reading with the wrong nesting, so the one-call route
+  prefetch silently fell back to tiles. Verified end-to-end (TomTom route ->
+  wazeapi returns all alerts along the trip in one request).
