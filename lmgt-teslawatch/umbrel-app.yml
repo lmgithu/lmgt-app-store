@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.16"
+version: "1.0.17"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/icon.png
 description: >-
@@ -33,6 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.16 — fixed PushWard Live Activities returning 422: the gauge template
-  needs value/min_value/max_value (not progress). The gauge now fills as the
-  distance to the alert counts down, with the live distance in the status line.
+  v1.0.17 — Live Activity now uses a clean linear progress bar (generic
+  template) that fills as the distance counts down toward the alert. Removed
+  the "enable sound" start screen (loads straight in) and the redundant km/h
+  readout.
