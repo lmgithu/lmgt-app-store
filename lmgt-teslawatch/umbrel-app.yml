@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.31"
+version: "1.0.32"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.31 — the Bark field now accepts either your device key or the full push
-  URL from the Bark app (https://api.day.app/KEY), so you can paste whichever
-  you have.
+  v1.0.32 — alerts are now grouped into a single collapsible stack on the lock
+  screen (newest shown in full), so long drives stay tidy, and they are no
+  longer archived in the Bark app history.
