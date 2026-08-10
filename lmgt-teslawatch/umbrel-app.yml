@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.44"
+version: "1.0.45"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,5 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.44 — iMessage alert emojis now match the category: police, hazards and
-  traffic each get their own emoji (was a generic siren for all).
+  v1.0.45 — Settings now show every value you entered. All fields (including
+  the Bark device key, iMessage secret and MQTT password) pre-fill with their
+  stored values instead of being hidden, and saving persists exactly what is
+  shown (clear a field to remove it).
