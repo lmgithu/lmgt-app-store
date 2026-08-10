@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.46"
+version: "1.0.47"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,6 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.46 — Fix: wazeapi police & speed-trap alerts never surfaced. The live
-  wazeapi.com response schema had changed, so every successful call parsed to
-  zero alerts. The parser now handles the current schema and reports come
-  through again.
+  v1.0.47 — wazeapi traffic jams are now categorized as Traffic (matching
+  TomTom) instead of Hazard, so they respect the separate "traffic" toggle.
+  Police stays Enforcement; accidents/closures/road hazards stay Hazard.
