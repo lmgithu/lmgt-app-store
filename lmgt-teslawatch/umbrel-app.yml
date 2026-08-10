@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.47"
+version: "1.0.48"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,6 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.47 — wazeapi traffic jams are now categorized as Traffic (matching
-  TomTom) instead of Hazard, so they respect the separate "traffic" toggle.
-  Police stays Enforcement; accidents/closures/road hazards stay Hazard.
+  v1.0.48 — Alert messages are now written for the Tesla text-to-speech: no
+  emojis, no dashes, distances spelled out (650 meters, 1.2 kilometers), and
+  speed limits read as words. Example: "Speed camera is 650 meters ahead. The
+  speed limit enforced is 90 kilometers per hour." Applies to Bark and iMessage.
