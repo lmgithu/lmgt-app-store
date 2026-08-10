@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.41"
+version: "1.0.42"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.41 — Bark critical alerts. A new Settings toggle sends alerts as iOS
-  Critical Alerts so they play even on silent / Focus / Do Not Disturb (allow
-  Critical Alerts for Bark in iOS Settings first), plus a 1–10 critical-alert
-  volume slider. Off by default.
+  v1.0.42 — Bark alerts to multiple phones. The device-key field now accepts
+  several keys (or push URLs) separated by commas; alerts fan out to every
+  phone you list. A dead key no longer blocks the others, and the status shows
+  how many delivered.
