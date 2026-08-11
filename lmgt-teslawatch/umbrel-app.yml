@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.53"
+version: "1.0.54"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.53 — The "Fixed cams" status now counts every fixed-camera source
-  loaded (speedcams.world + LUFOP + country databases), not just
-  speedcams.world. It is a sum of dataset sizes; overlapping cameras are still
-  collapsed live around the car so you never get a duplicate alert.
+  v1.0.54 — Settings polish: each section is now a distinct card with clearer
+  spacing, buttons have room to breathe (fixed the cramped diagnostics
+  button), and the file picker matches the theme. The diagnostics log is now
+  bounded — it keeps at most the last 3 days and 100 MB and persists across
+  restarts, so it can never grow without limit.
