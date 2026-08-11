@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.52"
+version: "1.0.53"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,11 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.52 — Root-cause fix for wazeapi never firing: a stale saved config with
-  an empty API key was masking the WAZEAPI_KEY env var, so live police/speed-
-  trap calls were silently skipped (only fixed cameras showed). A blank saved
-  value no longer overrides a non-blank env key, the key check now also accepts
-  the second account, and skips are logged. New: LUFOP camera database — upload
-  the Zones-de-danger EU ASC zip in Settings (replaces the previous LUFOP
-  import, merged/de-duped with other sources). New: a downloadable Diagnostics
-  log so live-data behaviour is verifiable after a drive.
+  v1.0.53 — The "Fixed cams" status now counts every fixed-camera source
+  loaded (speedcams.world + LUFOP + country databases), not just
+  speedcams.world. It is a sum of dataset sizes; overlapping cameras are still
+  collapsed live around the car so you never get a duplicate alert.
