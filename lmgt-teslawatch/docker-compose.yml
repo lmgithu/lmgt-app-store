@@ -8,15 +8,26 @@ services:
     container_name: lmgt-teslawatch_app_proxy_1
 
   web:
-    image: ghcr.io/lmgithu/teslawatch:1.0.56
+    # CI tags git tag v1.0.56 as "v1.0.56" (and "latest"), not bare "1.0.56".
+    image: ghcr.io/lmgithu/teslawatch:v1.0.56
     restart: on-failure
     stop_grace_period: 1m
     volumes:
       - ${APP_DATA_DIR}/data:/data
     environment:
+      # Pre-wired to the Mosquitto broker inside your lmgt-teslamate app.
       POSITION_SOURCE: "mqtt"
       MQTT_HOST: "lmgt-teslamate_mosquitto_1"
       MQTT_PORT: "1883"
       TESLAMATE_CAR_ID: "1"
       WAZE_ENV: "row"
+      # API keys are best entered in the app Settings UI (persist on the volume).
+      # Up to 5 wazeapi keys + 2 TomTom keys supported in v1.0.56+:
+      # TOMTOM_KEY: "..."
+      # TOMTOM_KEY2: "..."
+      # WAZEAPI_KEY: "wz_live_..."
+      # WAZEAPI_KEY2: "wz_live_..."
+      # WAZEAPI_KEY3: "wz_live_..."
+      # WAZEAPI_KEY4: "wz_live_..."
+      # WAZEAPI_KEY5: "wz_live_..."
     container_name: lmgt-teslawatch_web_1
