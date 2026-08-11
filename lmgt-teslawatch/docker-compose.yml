@@ -14,22 +14,9 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data:/data
     environment:
-      # Pre-wired to the Mosquitto broker inside your lmgt-teslamate app.
-      # That broker runs with no auth on the default port, so no credentials
-      # are needed. Change these in the app's Settings UI if your setup differs.
       POSITION_SOURCE: "mqtt"
       MQTT_HOST: "lmgt-teslamate_mosquitto_1"
       MQTT_PORT: "1883"
       TESLAMATE_CAR_ID: "1"
-      # Waze region: 'row' = Europe / rest of world.
       WAZE_ENV: "row"
-      # API keys are best entered in the app's Settings UI (they persist to the
-      # data volume). You can also seed them here — up to 5 wazeapi + 2 TomTom:
-      # TOMTOM_KEY: "..."           # hazards/accidents/jams (free ~2500/mo per key)
-      # TOMTOM_KEY2: "..."
-      # WAZEAPI_KEY: "wz_live_..."  # police + speed traps (free ~100/mo per key)
-      # WAZEAPI_KEY2: "wz_live_..."
-      # WAZEAPI_KEY3: "wz_live_..."
-      # WAZEAPI_KEY4: "wz_live_..."
-      # WAZEAPI_KEY5: "wz_live_..."
     container_name: lmgt-teslawatch_web_1
