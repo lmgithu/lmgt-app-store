@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.55"
+version: "1.0.56"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -20,6 +20,12 @@ description: >-
   music. A clean web dashboard (a top approach bar over a dark navigation map)
   is available for setup and live viewing. Pre-wired to the Mosquitto broker in
   the LMGT TeslaMate app.
+
+
+  Multi-key free-tier support for heavy drivers: up to 5 wazeapi keys
+  (~100 req/mo each ≈ 500/mo combined) and 2 TomTom keys (~2500 req/mo each).
+  Exhausted keys fail over in the same request so you can stack free accounts
+  safely.
 developer: lmgithu
 website: https://github.com/lmgithu/teslawatch
 dependencies:
@@ -33,13 +39,22 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  Critical fix: live Waze police & speed-trap alerts were never actually
-  fetched. Installs created before v1.0.34 had the old API host frozen in their
-  saved config, so every request hit a dead endpoint and silently returned
-  nothing (the provider dashboard showed zero usage). Tuning constants are no
-  longer persisted, so a stale config can never again pin an outdated endpoint
-  or value - this also restores the intended alert distance, which had been
-  stuck about 30% short. Failed lookups now back off instead of retrying every
-  poll (a real drive log showed 108 retries on one tile), a parked car no longer
-  triggers lookups, and the diagnostics log now records the actual HTTP status
-  and reason for every call. Settings shows the live endpoint and last result.
+  v1.0.56 — Multi-key API budgets for heavy drivers:
+
+
+  • wazeapi.com: up to 5 API keys (≈100 req/mo each → up to ≈500/mo combined).
+  Keys are tried in order; when one hits the switch-over limit or the server
+  reports quota exhausted (429), the next key is used in the same request
+  (not on the next poll). Status chip shows combined used/limit across keys.
+
+
+  • TomTom: up to 2 API keys with the same in-request failover when a key is
+  over its monthly budget or returns 401/403. Budget slider is per-key.
+
+
+  • Soft per-key switch-over (default 98) is now enforced for wazeapi; server
+  X-Quota headers still hard-block exhausted keys. Legacy single-key configs
+  migrate automatically.
+
+
+  Image: ghcr.io/lmgithu/teslawatch:1.0.56
