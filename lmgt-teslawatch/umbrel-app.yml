@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.50"
+version: "1.0.51"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,7 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.50 — The "Police (Waze)" status now shows wazeapi own usage numbers
-  (from its quota headers), so the line matches your wazeapi dashboard
-  exactly. It refreshes from normal driving calls; no extra API requests are
-  spent just to read the balance.
+  v1.0.51 — Fixed-camera datasets now auto-refresh nightly (default 4am,
+  server local time), so each morning has the latest speed cameras
+  (speedcams.world plus any country databases you have enabled). On by
+  default; configurable hour and on/off toggle in Settings, and the manual
+  Refresh button still works any time.
