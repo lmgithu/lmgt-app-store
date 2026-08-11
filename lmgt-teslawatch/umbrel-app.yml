@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.54"
+version: "1.0.55"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -20,6 +20,29 @@ description: >-
   music. A clean web dashboard (a top approach bar over a dark navigation map)
   is available for setup and live viewing. Pre-wired to the Mosquitto broker in
   the LMGT TeslaMate app.
+developer: lmgithu
+website: https://github.com/lmgithu/teslawatch
+dependencies:
+  - lmgt-teslamate
+repo: https://github.com/lmgithu/teslawatch
+support: https://github.com/lmgithu/teslawatch/issues
+port: 3100
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  Critical fix: live Waze police & speed-trap alerts were never actually
+  fetched. Installs created before v1.0.34 had the old API host frozen in their
+  saved config, so every request hit a dead endpoint and silently returned
+  nothing (the provider dashboard showed zero usage). Tuning constants are no
+  longer persisted, so a stale config can never again pin an outdated endpoint
+  or value - this also restores the intended alert distance, which had been
+  stuck about 30% short. Failed lookups now back off instead of retrying every
+  poll (a real drive log showed 108 retries on one tile), a parked car no longer
+  triggers lookups, and the diagnostics log now records the actual HTTP status
+  and reason for every call. Settings shows the live endpoint and last result.
 developer: lmgithu
 website: https://github.com/lmgithu/teslawatch
 dependencies:
