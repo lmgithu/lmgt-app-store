@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.49"
+version: "1.0.50"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -33,10 +33,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.49 — Major fix: live wazeapi alerts (police & speed traps) could
-  silently stop firing while only fixed cameras showed. A drifted local
-  request counter could sit at the cap and block every call. The app now
-  trusts wazeapi own quota headers as the source of truth, so a bad local
-  count can no longer block calls, and it still never exceeds the real
-  monthly limit. Polling also falls back to the map center before the first
-  car position, and every wazeapi call is now logged for diagnosis.
+  v1.0.50 — The "Police (Waze)" status now shows wazeapi own usage numbers
+  (from its quota headers), so the line matches your wazeapi dashboard
+  exactly. It refreshes from normal driving calls; no extra API requests are
+  spent just to read the balance.
