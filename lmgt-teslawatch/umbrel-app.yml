@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-teslawatch
 category: automotive
 name: TeslaWatch
-version: "1.0.56"
+version: "1.0.57"
 tagline: Alerts for police & speed cameras ahead — pushed to your phone
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-teslawatch/police.png
 description: >-
@@ -39,22 +39,17 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  v1.0.56 — Multi-key API budgets for heavy drivers:
+  v1.0.57 — TomTom key wipe + false "over budget" fixes:
 
 
-  • wazeapi.com: up to 5 API keys (≈100 req/mo each → up to ≈500/mo combined).
-  Keys are tried in order; when one hits the switch-over limit or the server
-  reports quota exhausted (429), the next key is used in the same request
-  (not on the next poll). Status chip shows combined used/limit across keys.
+  • Upgrading to multi-key no longer blanks a saved single TomTom key (empty
+  apiKeys[] no longer masks legacy apiKey).
 
 
-  • TomTom: up to 2 API keys with the same in-request failover when a key is
-  over its monthly budget or returns 401/403. Budget slider is per-key.
+  • Local usage is bound to the actual key string: pasting a key into a slot
+  that had phantom "exhausted" counts resets that slot. Budget 0/NaN no longer
+  hard-blocks every call. Settings: Reset TomTom usage counter.
 
 
-  • Soft per-key switch-over (default 98) is now enforced for wazeapi; server
-  X-Quota headers still hard-block exhausted keys. Legacy single-key configs
-  migrate automatically.
-
-
-  Image: ghcr.io/lmgithu/teslawatch:latest
+  • v1.0.56 multi-key: up to 5 wazeapi keys (~500/mo) + 2 TomTom keys with
+  in-request failover. Image: ghcr.io/lmgithu/teslawatch:latest
