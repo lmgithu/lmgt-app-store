@@ -43,21 +43,3 @@ releaseNotes: >-
   poll (a real drive log showed 108 retries on one tile), a parked car no longer
   triggers lookups, and the diagnostics log now records the actual HTTP status
   and reason for every call. Settings shows the live endpoint and last result.
-developer: lmgithu
-website: https://github.com/lmgithu/teslawatch
-dependencies:
-  - lmgt-teslamate
-repo: https://github.com/lmgithu/teslawatch
-support: https://github.com/lmgithu/teslawatch/issues
-port: 3100
-gallery: []
-path: ""
-defaultUsername: ""
-defaultPassword: ""
-torOnly: false
-releaseNotes: >-
-  v1.0.54 — Settings polish: each section is now a distinct card with clearer
-  spacing, buttons have room to breathe (fixed the cramped diagnostics
-  button), and the file picker matches the theme. The diagnostics log is now
-  bounded — it keeps at most the last 3 days and 100 MB and persists across
-  restarts, so it can never grow without limit.
