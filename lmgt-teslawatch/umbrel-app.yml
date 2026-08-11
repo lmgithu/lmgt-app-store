@@ -57,5 +57,4 @@ releaseNotes: >-
   migrate automatically.
 
 
-  Image: ghcr.io/lmgithu/teslawatch:v1.0.56
-  (Note: the published tag includes the "v" prefix.)
+  Image: ghcr.io/lmgithu/teslawatch:latest
