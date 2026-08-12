@@ -3,6 +3,7 @@ version: "3.7"
 services:
   app_proxy:
     environment:
+      TZ: "Europe/Budapest"
       APP_HOST: lmgt-teslawatch_web_1
       APP_PORT: 3000
     container_name: lmgt-teslawatch_app_proxy_1
