@@ -3,7 +3,6 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      TZ: "Europe/Budapest"
       APP_HOST: lmgt-teslawatch_web_1
       APP_PORT: 3000
     container_name: lmgt-teslawatch_app_proxy_1
@@ -16,6 +15,9 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data:/data
     environment:
+      # Local timezone so the nightly camera refresh hour is local, not UTC
+      # (needs tzdata in the image, added in the Dockerfile).
+      TZ: "Europe/Budapest"
       # Pre-wired to the Mosquitto broker inside your lmgt-teslamate app.
       POSITION_SOURCE: "mqtt"
       MQTT_HOST: "lmgt-teslamate_mosquitto_1"
