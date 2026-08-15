@@ -8,8 +8,8 @@ services:
     container_name: lmgt-teslawatch_app_proxy_1
 
   web:
-    # Always the newest build from main/tags (workflow also publishes :latest).
-    image: ghcr.io/lmgithu/teslawatch:latest
+    # Pinned to a specific published version for clarity. Bump on each release.
+    image: ghcr.io/lmgithu/teslawatch:1.0.99
     restart: on-failure
     stop_grace_period: 1m
     volumes:
