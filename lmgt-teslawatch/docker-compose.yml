@@ -9,7 +9,7 @@ services:
 
   web:
     # Pinned to a specific published version for clarity. Bump on each release.
-    image: ghcr.io/lmgithu/teslawatch:1.1.23
+    image: ghcr.io/lmgithu/teslawatch:1.1.24
     restart: on-failure
     stop_grace_period: 1m
     volumes:
