@@ -7,7 +7,7 @@ services:
       APP_PORT: 4000
 
   teslamate:
-    image: teslamate/teslamate:4.1.1  
+    image: teslamate/teslamate:4.2.0  
     restart: on-failure
     environment:
       ENCRYPTION_KEY: ${APP_SEED}      
