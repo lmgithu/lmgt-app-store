@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR="${APP_DATA_DIR:-$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")}"
+STATUS_FILE="${APP_DIR}/data/www/status.json"
+APP_ID_NAME="$(basename "${APP_DIR}")"
+CONTAINER="${APP_ID_NAME}_newt_1"
+
+mkdir -p "$(dirname "${STATUS_FILE}")"
+
+write_status() {
+  printf '%s\n' "$1" > "${STATUS_FILE}"
+}
+
+ENV_FILE="${APP_DIR}/data/config/newt.env"
+if [[ ! -f "${ENV_FILE}" ]] || ! grep -q '^NEWT_ID=.\+' "${ENV_FILE}" || ! grep -q '^NEWT_SECRET=.\+' "${ENV_FILE}"; then
+  write_status '{"status":"waiting","message":"Save your Pangolin site credentials, then restart Newt."}'
+  exit 0
+fi
+
+for _ in $(seq 1 30); do
+  if docker exec "${CONTAINER}" test -f /tmp/healthy >/dev/null 2>&1; then
+    write_status '{"status":"connected","message":"Newt is connected to Pangolin."}'
+    exit 0
+  fi
+  logs="$(docker logs "${CONTAINER}" 2>/dev/null | tail -n 80 || true)"
+  if echo "${logs}" | grep -qiE 'invalid|unauthorized|authentication failed|failed to connect|failed to authenticate'; then
+    write_status '{"status":"error","message":"Newt could not connect. Check the site ID, secret, and endpoint, then restart."}'
+    exit 0
+  fi
+  sleep 2
+done
+
+write_status '{"status":"pending","message":"Newt is starting. Refresh this page in a few seconds."}'

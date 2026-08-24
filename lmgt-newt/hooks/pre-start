@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR="${APP_DATA_DIR:-$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")}"
+DATA_DIR="${APP_DIR}/data"
+CONFIG_DIR="${DATA_DIR}/config"
+
+mkdir -p "${CONFIG_DIR}" "${DATA_DIR}/www"
+
+if [[ ! -f "${CONFIG_DIR}/newt.env" ]]; then
+  cat > "${CONFIG_DIR}/newt.env" <<'EOF'
+PANGOLIN_ENDPOINT=https://app.pangolin.net
+NEWT_ID=
+NEWT_SECRET=
+EOF
+fi
+chmod 600 "${CONFIG_DIR}/newt.env" 2>/dev/null || true
+
+if [[ ! -f "${DATA_DIR}/www/status.json" ]]; then
+  printf '%s\n' '{"status":"waiting","message":"Save your Pangolin site credentials, then restart Newt."}' > "${DATA_DIR}/www/status.json"
+fi

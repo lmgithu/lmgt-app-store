@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: ${APP_ID}_web_1
+      APP_PORT: 8080
+
+  newt:
+    image: fosrl/newt:1.16.0@sha256:345fdeb369be6608d82c41d70637636c78b2c04a6112ff6ec20fc21c48afc899
+    restart: on-failure
+    env_file:
+      - ${APP_DATA_DIR}/data/config/newt.env
+    environment:
+      HEALTH_FILE: /tmp/healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+    command:
+      - sh
+      - -c
+      - |
+        if ! grep -q '^NEWT_ID=.\+' /config/newt.env || ! grep -q '^NEWT_SECRET=.\+' /config/newt.env; then
+          echo "Waiting for site credentials. Save them on the Newt setup page, then restart this app."
+          sleep infinity
+        fi
+        exec newt
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /tmp/healthy ]"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  web:
+    image: python:3.12.11-alpine@sha256:efcdfa6a6b2fd2afb9c7dfa9a5b288a6f68338b5cfdebe6b637d986067d85757
+    restart: on-failure
+    command: ["python", "/setup/server.py"]
+    volumes:
+      - ${APP_DATA_DIR}/data/setup:/setup:ro
+      - ${APP_DATA_DIR}/data/www:/www:ro
+      - ${APP_DATA_DIR}/data/config:/config

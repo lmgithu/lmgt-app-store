@@ -1,0 +1,43 @@
+manifestVersion: 1
+id: lmgt-newt
+category: networking
+name: Newt
+version: "1.16.0"
+tagline: Connect this Umbrel to Pangolin as a site
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-newt/logo.png
+description: >-
+  Newt is Pangolin's site connector. It runs on this Umbrel, dials out to
+  Pangolin Cloud or your own Pangolin server, and publishes local apps through
+  that site. You do not need to port-forward your router.
+
+
+  This is the connector, not the Pangolin server. Create a site in Pangolin
+  first, then paste the endpoint, Newt ID, and Newt secret into this app's
+  setup page and restart Newt.
+
+
+  ⚙️ Get your Umbrel connected with Newt
+
+
+  - Open https://app.pangolin.net (or your self-hosted Pangolin dashboard).
+
+  - Add a Site and copy the Newt connection values.
+
+  - Paste them here, save, then restart this app from Umbrel.
+
+  - When the status shows connected, add resources in Pangolin. For other
+  Umbrel apps, use the container name as the target host (for example
+  immich_server_1) and the app's internal port.
+developer: Fossorial
+website: https://pangolin.net
+dependencies: []
+repo: https://github.com/fosrl/newt
+support: https://github.com/fosrl/newt/issues
+port: 14310
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: lmgt
+submission: https://github.com/lmgithu/lmgt-app-store

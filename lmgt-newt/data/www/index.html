@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Newt</title>
+    <link rel="shortcut icon" href="logo.png">
+    <style>
+        html { line-height: 1.15; -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: #181a1d;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif;
+            color: #fff;
+        }
+        *, h1, h2, p, label, li { color: #fff; font-weight: normal; }
+        .container { padding: 40px; max-width: 880px; margin: auto; }
+        .app { display: flex; margin: 20px 0 40px 0; align-items: center; }
+        .app-icon {
+            flex-shrink: 0;
+            height: 140px;
+            width: 140px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.95);
+            margin-right: 24px;
+        }
+        .app-name { font-size: 52px; line-height: 52px; font-weight: bold; margin: 10px 0 0 0; }
+        .app-status { display: block; font-size: 20px; margin: 10px 0 0 0; }
+        .success { color: #63FB72; }
+        .pending { color: #f68330; }
+        .error { color: #ff8b8b; }
+        .text-muted { opacity: 0.8; }
+        hr { width: 100%; height: 2px; background: #2F2C2C; border: none; margin: 40px 0; }
+        .card {
+            background: #252222;
+            border-radius: 18px;
+            padding: 28px;
+            border: 1px solid #343131;
+            margin-bottom: 24px;
+        }
+        h2 { font-size: 28px; font-weight: 650; margin: 0 0 12px 0; }
+        p, li { font-size: 18px; line-height: 1.45; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background: #2b2e34;
+            border: 1px solid #f68330;
+            border-radius: 6px;
+            padding: 2px 6px;
+        }
+        label { display: block; margin: 16px 0 6px; font-size: 16px; opacity: 0.9; }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            background: #181a1d;
+            color: #fff;
+            border: 1px solid #4a4545;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 18px;
+        }
+        button {
+            margin-top: 20px;
+            background: #f68330;
+            color: #181a1d;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-size: 18px;
+            font-weight: 650;
+            cursor: pointer;
+        }
+        .note { opacity: 0.8; font-size: 16px; margin-top: 16px; }
+        a { color: #f68330; }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="app">
+            <img class="app-icon" src="logo.png" width="256" height="256" alt="Newt">
+            <div>
+                <span id="status-dot" class="app-status pending">&#9679; Checking</span>
+                <h1 class="app-name">Newt</h1>
+            </div>
+        </div>
+        <p class="text-muted">Pangolin site connector for this Umbrel. No port forwarding required.</p>
+        <hr>
+
+        <div class="card">
+            <h2>Connection</h2>
+            <p id="status-message">Loading status…</p>
+        </div>
+
+        <div class="card">
+            <h2>Site credentials</h2>
+            <p>Create a site in <a href="https://app.pangolin.net" target="_blank" rel="noopener">Pangolin Cloud</a> or your self-hosted dashboard, then paste the values here.</p>
+            <form id="cred-form">
+                <label for="endpoint">Pangolin endpoint</label>
+                <input id="endpoint" name="endpoint" value="https://app.pangolin.net" required>
+                <label for="newt-id">Newt ID</label>
+                <input id="newt-id" name="id" autocomplete="off" required>
+                <label for="newt-secret">Newt secret</label>
+                <input id="newt-secret" name="secret" type="password" autocomplete="off" required>
+                <button type="submit">Save and wait for restart</button>
+            </form>
+            <p id="save-message" class="note"></p>
+        </div>
+
+        <div class="card">
+            <h2>Publish Umbrel apps</h2>
+            <ol>
+                <li>Wait until this page shows connected.</li>
+                <li>In Pangolin, add a resource on this site.</li>
+                <li>Set the target host to the Umbrel container name, such as <code>immich_server_1</code>, and the app's internal port.</li>
+            </ol>
+            <p class="note">Newt shares Umbrel's app network, so it can reach other installed apps without exposing them on your router.</p>
+        </div>
+    </section>
+    <script>
+        const statusDot = document.getElementById("status-dot");
+        const statusMessage = document.getElementById("status-message");
+        const saveMessage = document.getElementById("save-message");
+
+        function renderStatus(data) {
+            const map = {
+                connected: ["success", "Connected"],
+                pending: ["pending", "Connecting"],
+                error: ["error", "Not connected"],
+                waiting: ["pending", "Waiting for credentials"]
+            };
+            const [cls, label] = map[data.status] || ["pending", "Checking"];
+            statusDot.className = "app-status " + cls;
+            statusDot.innerHTML = "&#9679; " + label;
+            statusMessage.textContent = data.message || label;
+            if (data.endpoint) document.getElementById("endpoint").value = data.endpoint;
+            if (data.id) document.getElementById("newt-id").value = data.id;
+        }
+
+        fetch("/api/status")
+            .then((r) => r.json())
+            .then(renderStatus)
+            .catch(() => {
+                statusDot.className = "app-status error";
+                statusDot.innerHTML = "&#9679; Status unavailable";
+                statusMessage.textContent = "Unable to load Newt status.";
+            });
+
+        document.getElementById("cred-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            saveMessage.classList.remove("error");
+            saveMessage.textContent = "Saving…";
+            fetch("/api/save", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    endpoint: document.getElementById("endpoint").value,
+                    id: document.getElementById("newt-id").value,
+                    secret: document.getElementById("newt-secret").value
+                })
+            })
+                .then(async (r) => {
+                    const data = await r.json();
+                    if (!r.ok) throw new Error(data.error || "Save failed");
+                    saveMessage.textContent = data.message;
+                })
+                .catch((err) => {
+                    saveMessage.classList.add("error");
+                    saveMessage.textContent = err.message;
+                });
+        });
+    </script>
+</body>
+</html>
