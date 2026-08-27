@@ -3,7 +3,7 @@ id: lmgt-roon
 category: media
 name: Roon Server
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-roon/icon.png  
-version: "1.0.0"
+version: "1.0.8"
 tagline: High-end music server & library manager
 description: >-
   Roon Server turns your Umbrel into a powerful music server. Organizes your library,

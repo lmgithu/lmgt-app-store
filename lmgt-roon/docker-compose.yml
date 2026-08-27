@@ -1,6 +1,6 @@
 services:
   roon-server:
-    image: ghcr.io/roonlabs/roonserver:latest
+    image: ghcr.io/roonlabs/roonserver:1.0.8
     container_name: lmgt-roon
     restart: unless-stopped
     network_mode: host
