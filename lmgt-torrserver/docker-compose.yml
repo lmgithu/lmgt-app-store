@@ -7,7 +7,7 @@ services:
       PROXY_AUTH_ADD: 'false'
     container_name: lmgt-torrserver_app_proxy_1
   app:
-    image: ghcr.io/yourok/torrserver:MatriX.143
+    image: ghcr.io/yourok/torrserver:MatriX.144
     environment:
       TS_PORT: '5667'
       TS_DONTKILL: '1'
