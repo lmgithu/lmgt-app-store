@@ -7,7 +7,7 @@ services:
       APP_PORT: 4000
 
   teslamate:
-    image: teslamate/teslamate:latest  
+    image: teslamate/teslamate:4.2.0  
     restart: on-failure
     environment:
       ENCRYPTION_KEY: ${APP_SEED}      
@@ -51,7 +51,7 @@ services:
       - ${APP_DATA_DIR}/mosquitto-data:/mosquitto/data
       
   teslamateapi:
-    image: mytesla/teslamateapi:latest
+    image: mytesla/teslamateapi:2.7.2
     restart: unless-stopped
     depends_on:
       - database
