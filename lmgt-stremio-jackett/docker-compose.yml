@@ -14,3 +14,7 @@ services:
     stop_grace_period: 1m
     environment:
       DISABLE_JACKETT_IMDB_SEARCH: "False"
+    volumes:
+      # Patched configure script: always emit http://<host>:11471 so Stremio
+      # does not rewrite the install URL to https://<host>/ and drop the port.
+      - ${APP_DATA_DIR}/config.js:/app/templates/config.js:ro

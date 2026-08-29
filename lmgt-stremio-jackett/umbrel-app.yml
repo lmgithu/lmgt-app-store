@@ -18,8 +18,13 @@ description: >-
   - Jackett API key: copy it from the Jackett app
 
 
-  Click Install to add the addon to Stremio. Stremio clients load this addon
-  from port 11471, which is not behind Umbrel login.
+  Do not rely on the in-page Install button. Stremio turns that into HTTPS
+  and drops port 11471. Click Copy Link, then in Stremio go to Addons → Add
+  addon and paste the http://<umbrel-ip>:11471/.../manifest.json URL.
+
+
+  Stremio clients load this addon from port 11471, which is not behind
+  Umbrel login.
 
 
   Stremio Jackett is a Stremio addon. It does not play video by itself. Use
@@ -42,6 +47,8 @@ gallery: []
 path: ""
 defaultUsername: ""
 defaultPassword: ""
-releaseNotes: ""
+releaseNotes: >-
+  Fix Stremio install URLs so they keep http:// and port 11471. Use Copy
+  Link, then paste the URL in Stremio Addons.
 submitter: lmgt
 submission: https://github.com/lmgithu/lmgt-app-store
