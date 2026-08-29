@@ -9,6 +9,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (jackettHost && jackettHost.value === '') {
         jackettHost.value = 'http://jackett_server_1:9117';
     }
+    var installBtn = document.getElementById('install');
+    if (installBtn) {
+        installBtn.textContent = 'Show addon URL';
+    }
+    var copyBtn = document.getElementById('copy');
+    if (copyBtn) {
+        copyBtn.style.display = 'none';
+    }
+    ensureManifestBox();
+    refreshManifestUrl();
+    document.addEventListener('input', refreshManifestUrl);
+    document.addEventListener('change', refreshManifestUrl);
+    document.addEventListener('click', function () {
+        setTimeout(refreshManifestUrl, 0);
+    });
 });
 
 function setElementDisplay(elementId, displayStatus) {
@@ -113,46 +128,63 @@ function publicAddonOrigin() {
     return 'http://' + hostname + ':' + ADDON_PORT;
 }
 
-function getLink(method) {
-    const addonHost = publicAddonOrigin();
-    const jackettHost = document.getElementById('jackett-host')?.value;
-    const jackettApi = document.getElementById('jackett-api')?.value;
-    const debridApi = document.getElementById('debrid-api').value;
-    const tmdbApi = document.getElementById('tmdb-api').value;
-    const service = document.getElementById('service').value;
-    const exclusionKeywords = document.getElementById('exclusion-keywords').value.split(',').map(keyword => keyword.trim()).filter(keyword => keyword !== '');
-    let maxSize = document.getElementById('maxSize').value;
-    let resultsPerQuality = document.getElementById('resultsPerQuality').value;
-    let maxResults = document.getElementById('maxResults').value;
-    const jackett = document.getElementById('jackett')?.checked;
-    const cache = document.getElementById('cache')?.checked;
-    const torrenting = document.getElementById('torrenting').checked;
-    const debrid = document.getElementById('debrid').checked;
-    const metadataProvider = document.getElementById('tmdb').checked ? 'tmdb' : 'cinemeta';
-    const selectedQualityExclusion = [];
+function val(id) {
+    var el = document.getElementById(id);
+    if (!el) {
+        return '';
+    }
+    return el.value;
+}
 
-    qualityExclusions.forEach(quality => {
-        if (document.getElementById(quality).checked) {
+function checked(id) {
+    var el = document.getElementById(id);
+    return !!(el && el.checked);
+}
+
+function buildManifest() {
+    var debridEl = document.getElementById('debrid');
+    if (!debridEl) {
+        return { error: 'Page is still loading.' };
+    }
+
+    var addonHost = publicAddonOrigin();
+    var jackettHost = val('jackett-host');
+    var jackettApi = val('jackett-api');
+    var debridApi = val('debrid-api');
+    var tmdbApi = val('tmdb-api');
+    var service = val('service') || 'realdebrid';
+    var exclusionKeywords = val('exclusion-keywords').split(',').map(function (keyword) {
+        return keyword.trim();
+    }).filter(function (keyword) {
+        return keyword !== '';
+    });
+    var maxSize = val('maxSize');
+    var resultsPerQuality = val('resultsPerQuality');
+    var maxResults = val('maxResults');
+    var jackett = checked('jackett');
+    var cache = checked('cache');
+    var torrenting = checked('torrenting');
+    var debrid = checked('debrid');
+    var metadataProvider = checked('tmdb') ? 'tmdb' : 'cinemeta';
+    var selectedQualityExclusion = [];
+    qualityExclusions.forEach(function (quality) {
+        if (checked(quality)) {
             selectedQualityExclusion.push(quality);
         }
     });
-
-    const selectedLanguages = [];
-    languages.forEach(language => {
-        if (document.getElementById(language).checked) {
+    var selectedLanguages = [];
+    languages.forEach(function (language) {
+        if (checked(language)) {
             selectedLanguages.push(language);
         }
     });
-
-    const getAllLanguages = document.getElementById('get-all-languages').checked;
-
-    let filter;
-    sorts.forEach(sort => {
-        if (document.getElementById(sort).checked) {
+    var getAllLanguages = checked('get-all-languages');
+    var filter = 'quality';
+    sorts.forEach(function (sort) {
+        if (checked(sort)) {
             filter = sort;
         }
     });
-
     if (maxSize === '' || isNaN(maxSize)) {
         maxSize = 0;
     }
@@ -162,100 +194,100 @@ function getLink(method) {
     if (resultsPerQuality === '' || isNaN(resultsPerQuality)) {
         resultsPerQuality = 1;
     }
-    let data = {
-        addonHost,
-        jackettHost,
-        'jackettApiKey': jackettApi,
-        service,
-        'debridKey': debridApi,
-        maxSize,
-        exclusionKeywords,
-        'languages': selectedLanguages,
-        getAllLanguages,
-        'sort': filter,
-        resultsPerQuality,
-        maxResults,
-        'exclusion': selectedQualityExclusion,
-        tmdbApi,
-        jackett,
-        cache,
-        torrenting,
-        debrid,
-        metadataProvider
+
+    if (jackett && (jackettHost === '' || jackettApi === '')) {
+        return { error: 'Enter the Jackett URL and API key. The addon URL will appear here.' };
+    }
+    if (debrid && debridApi === '') {
+        return { error: 'Enter a debrid API key, or turn off Enable Debrid Service.' };
+    }
+    if (metadataProvider === 'tmdb' && tmdbApi === '') {
+        return { error: 'Enter a TMDB API key, or choose Cinemeta.' };
+    }
+    if (selectedLanguages.length === 0 && !getAllLanguages) {
+        return { error: 'Select at least one language, or enable Select All Languages.' };
+    }
+
+    var data = {
+        addonHost: addonHost,
+        jackettHost: jackettHost,
+        jackettApiKey: jackettApi,
+        service: service,
+        debridKey: debridApi,
+        maxSize: maxSize,
+        exclusionKeywords: exclusionKeywords,
+        languages: selectedLanguages,
+        getAllLanguages: getAllLanguages,
+        sort: filter,
+        resultsPerQuality: resultsPerQuality,
+        maxResults: maxResults,
+        exclusion: selectedQualityExclusion,
+        tmdbApi: tmdbApi,
+        jackett: jackett,
+        cache: cache,
+        torrenting: torrenting,
+        debrid: debrid,
+        metadataProvider: metadataProvider
     };
-    if ((jackett && (jackettHost === '' || jackettApi === '')) || (debrid && debridApi === '') || (metadataProvider === 'tmdb' && tmdbApi === '') || selectedLanguages.length === 0 && !getAllLanguages) {
-        alert('Please fill all required fields');
-        return false;
-    }
-    const httpManifest = addonHost + '/' + btoa(JSON.stringify(data)) + '/manifest.json';
-
-    showManifestUrl(httpManifest);
-
-    if (method === 'link') {
-        window.location.href = 'stremio://' + httpManifest;
-    }
+    return { url: addonHost + '/' + btoa(JSON.stringify(data)) + '/manifest.json' };
 }
 
-function selectUrlField(el) {
-    el.focus();
-    el.select();
-    if (typeof el.setSelectionRange === 'function') {
-        el.setSelectionRange(0, el.value.length);
-    }
-}
-
-function tryCopyUrl(el) {
-    selectUrlField(el);
-    var copied = false;
-    try {
-        copied = document.execCommand('copy');
-    } catch (e) {
-        copied = false;
-    }
-    if (!copied && navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(el.value).catch(function () {});
-    }
-    return copied;
-}
-
-function showManifestUrl(url) {
+function ensureManifestBox() {
     var box = document.getElementById('umbrel-manifest-box');
-    if (!box) {
-        box = document.createElement('div');
-        box.id = 'umbrel-manifest-box';
-        box.style.cssText = 'margin-top:24px;padding:16px;border-radius:12px;background:rgba(15,23,42,0.85);border:1px solid rgba(99,102,241,0.6);';
-
-        var label = document.createElement('p');
-        label.style.cssText = 'margin:0 0 8px 0;color:#e2e8f0;font-size:14px;';
-        label.textContent = 'Addon URL. Tap the box, Copy, then paste it in Stremio Addons.';
-        box.appendChild(label);
-
-        var ta = document.createElement('textarea');
-        ta.id = 'umbrel-manifest-url';
-        ta.readOnly = true;
-        ta.setAttribute('readonly', 'readonly');
-        ta.setAttribute('rows', '6');
-        ta.style.cssText = 'width:100%;box-sizing:border-box;padding:12px;border-radius:8px;border:1px solid #6366f1;background:#0f172a;color:#fff;font-size:16px;line-height:1.4;-webkit-user-select:all;user-select:all;-webkit-touch-callout:default;';
-        ta.addEventListener('click', function () { selectUrlField(ta); });
-        ta.addEventListener('focus', function () { selectUrlField(ta); });
-        box.appendChild(ta);
-
-        var hint = document.createElement('p');
-        hint.id = 'umbrel-manifest-hint';
-        hint.style.cssText = 'margin:8px 0 0 0;color:#c7d2fe;font-size:13px;';
-        hint.textContent = 'Safari and the Stremio app often block automatic copy. Select the URL above and copy it.';
-        box.appendChild(hint);
-
-        var actions = document.querySelector('.flex.gap-4.pt-8');
-        if (actions && actions.parentNode) {
-            actions.parentNode.insertBefore(box, actions.nextSibling);
-        } else {
-            document.body.appendChild(box);
-        }
+    if (box) {
+        return box;
     }
+    box = document.createElement('div');
+    box.id = 'umbrel-manifest-box';
+    box.style.cssText = 'margin:0 0 24px 0;padding:16px;border-radius:12px;background:rgba(15,23,42,0.95);border:1px solid #6366f1;';
 
-    var field = document.getElementById('umbrel-manifest-url');
-    field.value = url;
-    box.scrollIntoView({ block: 'center' });
-    tryCopyUrl(field);
+    var label = document.createElement('p');
+    label.style.cssText = 'margin:0 0 10px 0;color:#e2e8f0;font-size:15px;font-weight:600;';
+    label.textContent = 'Addon URL — select the text below and copy it, then paste it in Stremio Addons.';
+    box.appendChild(label);
+
+    var urlText = document.createElement('p');
+    urlText.id = 'umbrel-manifest-url';
+    urlText.style.cssText = 'margin:0;padding:12px;border-radius:8px;background:#0f172a;color:#a5b4fc;font-size:14px;line-height:1.5;word-break:break-all;-webkit-user-select:text;user-select:text;-webkit-touch-callout:default;';
+    box.appendChild(urlText);
+
+    var link = document.createElement('a');
+    link.id = 'umbrel-manifest-link';
+    link.style.cssText = 'display:none;margin-top:10px;color:#c7d2fe;font-size:14px;word-break:break-all;';
+    link.textContent = 'Long-press this link to copy';
+    box.appendChild(link);
+
+    var form = document.querySelector('form');
+    if (form && form.parentNode) {
+        form.parentNode.insertBefore(box, form);
+    } else {
+        document.body.insertBefore(box, document.body.firstChild);
+    }
+    return box;
+}
+
+function refreshManifestUrl() {
+    var box = ensureManifestBox();
+    var urlText = document.getElementById('umbrel-manifest-url');
+    var link = document.getElementById('umbrel-manifest-link');
+    var result = buildManifest();
+    if (result.error) {
+        urlText.textContent = result.error;
+        urlText.style.color = '#fde68a';
+        link.style.display = 'none';
+        link.removeAttribute('href');
+        return;
+    }
+    urlText.textContent = result.url;
+    urlText.style.color = '#a5b4fc';
+    link.href = result.url;
+    link.style.display = 'inline-block';
+}
+
+function getLink(method) {
+    refreshManifestUrl();
+    var box = document.getElementById('umbrel-manifest-box');
+    if (box) {
+        box.scrollIntoView({ block: 'start' });
+    }
 }
