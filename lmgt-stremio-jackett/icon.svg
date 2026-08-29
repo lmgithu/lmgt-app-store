@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="#1B2430"/>
+  <!-- horseshoe magnet -->
+  <path d="M64 214 V118 C64 58 192 58 192 118 V214 H156 V118 C156 96 100 96 100 118 V214 Z" fill="#F5A524"/>
+  <rect x="64" y="190" width="36" height="32" fill="#6C5CE7"/>
+  <rect x="156" y="190" width="36" height="32" fill="#E74C3C"/>
+</svg>

@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: lmgt-stremio-jackett_web_1
+      APP_PORT: 3000
+      # Stremio clients fetch the addon without Umbrel cookies.
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    image: belmeg/stremio-addon-jackett:v4.2.7@sha256:7823729bd336d251fc8551dd516870bfe87245fd8e80c0c4af8526ab52c81055
+    restart: on-failure
+    stop_grace_period: 1m
+    environment:
+      DISABLE_JACKETT_IMDB_SEARCH: "False"

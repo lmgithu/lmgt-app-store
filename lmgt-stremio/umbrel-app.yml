@@ -1,0 +1,49 @@
+manifestVersion: 1
+id: lmgt-stremio
+category: media
+name: Stremio Server
+version: "4.21.1"
+tagline: Local Stremio streaming server for your Umbrel
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-stremio/icon.png
+description: >-
+  ⚙️ Setup: this app is the Stremio streaming server, not the Stremio player.
+  Install a Stremio client on your phone, TV, or computer, then point that
+  client at this Umbrel.
+
+
+  In the Stremio client go to Settings → Streaming, enable the streaming
+  server override, and set:
+
+
+  http://<umbrel-ip>:11470
+
+
+  HTTPS (self-signed) is also published at https://<umbrel-ip>:12470.
+
+
+  Opening this Umbrel app shows a connection page. Stremio clients talk to
+  ports 11470 and 12470 directly, so they do not use Umbrel login.
+
+
+  Stremio Server transcodes and streams media for official Stremio clients.
+  Keep it running while you watch. Pair it with the Stremio Jackett app from
+  this store plus the official Jackett app to search your indexers from
+  inside Stremio.
+
+
+  Optional: install Flaresolverr from the official Umbrel App Store if Jackett
+  indexers need Cloudflare bypass, then in Jackett set FlareSolverr to
+  http://flaresolverr_server_1:8191.
+developer: Smart Code Ltd.
+website: https://www.stremio.com
+dependencies: []
+repo: https://github.com/Stremio/server-docker
+support: https://github.com/Stremio/server-docker/issues
+port: 11469
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: lmgt
+submission: https://github.com/lmgithu/lmgt-app-store
