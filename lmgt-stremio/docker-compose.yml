@@ -28,3 +28,5 @@ services:
       APP_PATH: /data
       NO_CORS: "1"
       CASTING_DISABLED: "1"
+      FFMPEG_BIN: /usr/lib/jellyfin-ffmpeg/ffmpeg
+      FFPROBE_BIN: /usr/lib/jellyfin-ffmpeg/ffprobe

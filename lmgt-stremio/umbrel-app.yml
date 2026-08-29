@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-stremio
 category: media
 name: Stremio Server
-version: "4.21.1"
+version: "4.21.1.1"
 tagline: Local Stremio streaming server for your Umbrel
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-stremio/icon.png
 description: >-
@@ -25,10 +25,16 @@ description: >-
   ports 11470 and 12470 directly, so they do not use Umbrel login.
 
 
-  Stremio Server transcodes and streams media for official Stremio clients.
-  Keep it running while you watch. Pair it with the Stremio Jackett app from
-  this store plus the official Jackett app to search your indexers from
-  inside Stremio.
+  Stremio Server transcodes and streams torrents for official Stremio
+  clients. Keep it running while you watch. Pair it with the Stremio Jackett
+  app from this store plus the official Jackett app to search your indexers
+  from inside Stremio.
+
+
+  Local files on your phone or computer are not on the Umbrel. Open those
+  with Stremio's built-in local streaming server, or play torrents through
+  this app. Hardware transcoding (NVENC/VAAPI/QSV) is not available unless
+  the device has a GPU passed into Docker; software ffmpeg still works.
 
 
   Optional: install Flaresolverr from the official Umbrel App Store if Jackett
@@ -44,6 +50,8 @@ gallery: []
 path: ""
 defaultUsername: ""
 defaultPassword: ""
-releaseNotes: ""
+releaseNotes: >-
+  Point ffmpeg at jellyfin-ffmpeg. Local files on your computer cannot play
+  through this remote server; use torrents from Stremio addons instead.
 submitter: lmgt
 submission: https://github.com/lmgithu/lmgt-app-store
