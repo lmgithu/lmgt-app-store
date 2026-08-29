@@ -4,7 +4,7 @@ name: TorrServer
 tagline: A torrent streaming server
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-torrserver/icon.png
 category: networking
-version: "MatriX.144"
+version: "MatriX.144.1"
 port: 5667
 description: >-
   📡 TorrServer is an application that receives torrent sources and transforms them into a direct and continuous media stream. It accepts magnet links or torrent files, connects to the swarm, retrieves the necessary data segments and prepares them in a way that media players can access immediately without waiting for a complete download. The application manages buffering, caching and sequential reading so that playback begins as soon as the first pieces of the file are available. It keeps track of the torrent structure, selects the required pieces in the correct order, maintains connections to peers and ensures a stable data flow for smooth playback.
