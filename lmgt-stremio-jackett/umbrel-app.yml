@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-stremio-jackett
 category: media
 name: Stremio Jackett
-version: "4.2.7.2"
+version: "4.2.7.3"
 tagline: Search Jackett indexers from inside Stremio
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-stremio-jackett/icon.png
 description: >-
@@ -18,10 +18,10 @@ description: >-
   - Jackett API key: copy it from the Jackett app
 
 
-  The configure page shows the addon URL as selectable text at the top.
-  Select that URL, copy it, then in Stremio go to Addons → Add addon and
-  paste it. It must start with http://<umbrel-ip>:11471/. Do not use the
-  Install button.
+  A purple Addon URL bar is pinned to the top of the configure page.
+  Select that text, copy it, then in Stremio go to Addons → Add addon and
+  paste it. It must start with http://<umbrel-ip>:11471/. Copy and Install
+  do not work in Safari or the Stremio app.
 
 
   Stremio clients load this addon from port 11471, which is not behind
@@ -49,7 +49,7 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Always show the addon URL as selectable text at the top of the configure
-  page. Select and copy it manually, then paste it in Stremio Addons.
+  Pin a purple Addon URL bar to the top of the configure page. Select the
+  URL and paste it in Stremio Addons. Do not use Copy or Install.
 submitter: lmgt
 submission: https://github.com/lmgithu/lmgt-app-store
