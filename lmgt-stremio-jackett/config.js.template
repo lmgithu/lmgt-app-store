@@ -189,19 +189,73 @@ function getLink(method) {
     }
     const httpManifest = addonHost + '/' + btoa(JSON.stringify(data)) + '/manifest.json';
 
+    showManifestUrl(httpManifest);
+
     if (method === 'link') {
-        window.open('stremio://' + httpManifest, '_blank');
-        alert('If Stremio says it failed to fetch the addon, do not use the Install button.\n\nIn Stremio open Addons, choose Add addon, and paste:\n\n' + httpManifest);
-    } else if (method === 'copy') {
-        if (!navigator.clipboard) {
-            alert('Copy this URL into Stremio Addons:\n' + httpManifest);
-            console.log(httpManifest);
-            return;
-        }
-        navigator.clipboard.writeText(httpManifest).then(() => {
-            alert('Copied. In Stremio open Addons, choose Add addon, and paste:\n\n' + httpManifest);
-        }, () => {
-            alert('Copy this URL into Stremio Addons:\n' + httpManifest);
-        });
+        window.location.href = 'stremio://' + httpManifest;
     }
+}
+
+function selectUrlField(el) {
+    el.focus();
+    el.select();
+    if (typeof el.setSelectionRange === 'function') {
+        el.setSelectionRange(0, el.value.length);
+    }
+}
+
+function tryCopyUrl(el) {
+    selectUrlField(el);
+    var copied = false;
+    try {
+        copied = document.execCommand('copy');
+    } catch (e) {
+        copied = false;
+    }
+    if (!copied && navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(el.value).catch(function () {});
+    }
+    return copied;
+}
+
+function showManifestUrl(url) {
+    var box = document.getElementById('umbrel-manifest-box');
+    if (!box) {
+        box = document.createElement('div');
+        box.id = 'umbrel-manifest-box';
+        box.style.cssText = 'margin-top:24px;padding:16px;border-radius:12px;background:rgba(15,23,42,0.85);border:1px solid rgba(99,102,241,0.6);';
+
+        var label = document.createElement('p');
+        label.style.cssText = 'margin:0 0 8px 0;color:#e2e8f0;font-size:14px;';
+        label.textContent = 'Addon URL. Tap the box, Copy, then paste it in Stremio Addons.';
+        box.appendChild(label);
+
+        var ta = document.createElement('textarea');
+        ta.id = 'umbrel-manifest-url';
+        ta.readOnly = true;
+        ta.setAttribute('readonly', 'readonly');
+        ta.setAttribute('rows', '6');
+        ta.style.cssText = 'width:100%;box-sizing:border-box;padding:12px;border-radius:8px;border:1px solid #6366f1;background:#0f172a;color:#fff;font-size:16px;line-height:1.4;-webkit-user-select:all;user-select:all;-webkit-touch-callout:default;';
+        ta.addEventListener('click', function () { selectUrlField(ta); });
+        ta.addEventListener('focus', function () { selectUrlField(ta); });
+        box.appendChild(ta);
+
+        var hint = document.createElement('p');
+        hint.id = 'umbrel-manifest-hint';
+        hint.style.cssText = 'margin:8px 0 0 0;color:#c7d2fe;font-size:13px;';
+        hint.textContent = 'Safari and the Stremio app often block automatic copy. Select the URL above and copy it.';
+        box.appendChild(hint);
+
+        var actions = document.querySelector('.flex.gap-4.pt-8');
+        if (actions && actions.parentNode) {
+            actions.parentNode.insertBefore(box, actions.nextSibling);
+        } else {
+            document.body.appendChild(box);
+        }
+    }
+
+    var field = document.getElementById('umbrel-manifest-url');
+    field.value = url;
+    box.scrollIntoView({ block: 'center' });
+    tryCopyUrl(field);
 }
