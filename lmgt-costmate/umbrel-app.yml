@@ -1,0 +1,21 @@
+manifestVersion: 1
+id: lmgt-costmate
+category: automotive
+name: CostMate
+version: "1.1.0"
+tagline: CostMate
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-costmate/icon.png
+description: CostMate
+developer: lmgithu
+website: https://github.com/lmgithu/costmate
+dependencies:
+  - lmgt-teslamate
+repo: https://github.com/lmgithu/costmate
+support: https://github.com/lmgithu/costmate/issues
+port: 3210
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: CostMate

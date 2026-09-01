@@ -3,13 +3,13 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: lmgt-suc-cost_web_1
+      APP_HOST: lmgt-costmate_web_1
       APP_PORT: 3000
-    container_name: lmgt-suc-cost_app_proxy_1
+    container_name: lmgt-costmate_app_proxy_1
 
   web:
     # Pinned to a specific published version for clarity. Bump on each release.
-    image: ghcr.io/lmgithu/lmgt-suc-cost:1.0.1
+    image: ghcr.io/lmgithu/lmgt-costmate:1.1.0
     restart: on-failure
     stop_grace_period: 1m
     volumes:
@@ -25,5 +25,5 @@ services:
       TESLAMATE_DATABASE_PORT: "5432"
       TESLAMATE_DATABASE_USER: "teslamate"
       TESLAMATE_DATABASE_NAME: "teslamate"
-      TESLAMATE_DATABASE_PASS: "${APP_SUC_COST_TESLAMATE_DATABASE_PASS}"
-    container_name: lmgt-suc-cost_web_1
+      TESLAMATE_DATABASE_PASS: "${APP_COSTMATE_TESLAMATE_DATABASE_PASS}"
+    container_name: lmgt-costmate_web_1
