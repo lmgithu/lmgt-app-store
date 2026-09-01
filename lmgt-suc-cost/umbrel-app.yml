@@ -1,0 +1,32 @@
+manifestVersion: 1
+id: lmgt-suc-cost
+category: automotive
+name: SuC Cost
+version: "1.0.0"
+tagline: Auto-fill TeslaMate Supercharger costs from suc-tracker.eu
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-suc-cost/icon.png
+description: >-
+  Downloads the suc-tracker.eu European Supercharger price snapshot once a
+  day, then watches TeslaMate for newly finished Supercharger sessions and
+  writes the EUR cost into charging_processes.cost.
+
+
+  Geofenced locations such as Home and Work are left alone. Sessions that
+  are still open, or that ended less than a few minutes ago, are ignored.
+  Historical charges from before the app was installed are not backfilled.
+developer: lmgithu
+website: https://github.com/lmgithu/suc-cost
+dependencies:
+  - lmgt-teslamate
+repo: https://github.com/lmgithu/suc-cost
+support: https://github.com/lmgithu/suc-cost/issues
+port: 3210
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  Initial release. Nightly suc-tracker.eu catalog download, GPS match to
+  Superchargers, time-of-day tariffs, HUF/GBP/… converted to EUR, and
+  automatic TeslaMate cost updates for new closed sessions only.
