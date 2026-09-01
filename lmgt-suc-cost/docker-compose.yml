@@ -9,7 +9,7 @@ services:
 
   web:
     # Pinned to a specific published version for clarity. Bump on each release.
-    image: ghcr.io/lmgithu/suc-cost:1.0.0
+    image: ghcr.io/lmgithu/lmgt-suc-cost:1.0.1
     restart: on-failure
     stop_grace_period: 1m
     volumes:
@@ -18,9 +18,12 @@ services:
       TZ: "Europe/Luxembourg"
       PORT: "3000"
       DATA_DIR: "/data"
-      TESLAMATE_DATABASE_HOST: "${APP_SUC_COST_TESLAMATE_DATABASE_HOST}"
-      TESLAMATE_DATABASE_PORT: "${APP_SUC_COST_TESLAMATE_DATABASE_PORT}"
-      TESLAMATE_DATABASE_USER: "${APP_SUC_COST_TESLAMATE_DATABASE_USER}"
-      TESLAMATE_DATABASE_NAME: "${APP_SUC_COST_TESLAMATE_DATABASE_NAME}"
+      # Host/user/db match TeslaWatch: hardcoded to the lmgt-teslamate
+      # containers on the shared Umbrel network. Password is derived in
+      # exports.sh from TeslaMate's APP_PASSWORD entropy label.
+      TESLAMATE_DATABASE_HOST: "lmgt-teslamate_database_1"
+      TESLAMATE_DATABASE_PORT: "5432"
+      TESLAMATE_DATABASE_USER: "teslamate"
+      TESLAMATE_DATABASE_NAME: "teslamate"
       TESLAMATE_DATABASE_PASS: "${APP_SUC_COST_TESLAMATE_DATABASE_PASS}"
     container_name: lmgt-suc-cost_web_1

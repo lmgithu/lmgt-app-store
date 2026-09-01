@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-suc-cost
 category: automotive
 name: SuC Cost
-version: "1.0.0"
+version: "1.0.1"
 tagline: Auto-fill TeslaMate Supercharger costs from suc-tracker.eu
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-suc-cost/icon.png
 description: >-
@@ -27,6 +27,5 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  Initial release. Nightly suc-tracker.eu catalog download, GPS match to
-  Superchargers, time-of-day tariffs, HUF/GBP/… converted to EUR, and
-  automatic TeslaMate cost updates for new closed sessions only.
+  Fix Umbrel install: publish a public GHCR image so the App Store can
+  pull without login. TeslaMate DB host is wired like TeslaWatch.
