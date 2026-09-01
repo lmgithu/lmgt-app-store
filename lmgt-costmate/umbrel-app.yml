@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-costmate
 category: automotive
 name: CostMate
-version: "1.1.1"
+version: "1.1.2"
 tagline: CostMate
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-costmate/icon.png
 description: CostMate
@@ -18,4 +18,4 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 torOnly: false
-releaseNotes: Compact status cards and paged activity (10 per page, last 50).
+releaseNotes: Thousands separators, yyyy-mm-dd HH:mm:ss dates, bill charger energy.
