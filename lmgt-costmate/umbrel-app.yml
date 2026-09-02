@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-costmate
 category: automotive
 name: CostMate
-version: "1.0.4"
+version: "1.1.3"
 tagline: CostMate
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-costmate/icon.png
 description: CostMate
@@ -18,4 +18,4 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 torOnly: false
-releaseNotes: Match helper text size to the rest of the page.
+releaseNotes: New icon that matches the TeslaMate look — flat dark background with a green coin and bolt.
