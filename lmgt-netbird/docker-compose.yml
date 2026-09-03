@@ -8,7 +8,7 @@ services:
     container_name: lmgt-netbird_app_proxy_1
 
   app:
-    image: netbirdio/netbird:0.77.1
+    image: netbirdio/netbird:0.78.0
     restart: on-failure
     #user: '1000:1000'
     cap_add:
