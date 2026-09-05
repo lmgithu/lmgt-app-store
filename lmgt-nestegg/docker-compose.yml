@@ -3,7 +3,7 @@ version: "3.7"
 services:
   # No app_proxy — open directly: http://<umbrel-ip>:3910
   nestegg:
-    image: ghcr.io/lmgithu/nestegg:1.0.0@sha256:924cf62f5d41ed6c23a3e7f37936bc25bd9fdf8c1292056deb3d4e8192d1a685
+    image: ghcr.io/lmgithu/nestegg:1.0.1@sha256:576e93dc2dfd1b5f68cba8179109bcc9e8593cd235f6e239a4ba97e6bc6498b7
     restart: on-failure
     ports:
       - "3910:3910"
