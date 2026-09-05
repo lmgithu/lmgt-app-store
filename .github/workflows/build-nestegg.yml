@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - "lmgt-nestegg/**"
-    paths-ignore:
-      - "lmgt-nestegg/**/docker-compose.yml"
   workflow_dispatch:
 
 permissions:
