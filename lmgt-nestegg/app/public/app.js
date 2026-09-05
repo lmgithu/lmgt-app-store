@@ -44,48 +44,95 @@ const currencyName = code => {
   return found ? found[1] : code;
 };
 
-/* =================== encryption (Web Crypto) =================== */
-const PBKDF2_ITERATIONS = 310000;
+/* =================== encryption (Web Crypto w/ pure-JS fallback) =================== */
+const HAS_NATIVE_CYC = !!(window.crypto && window.crypto.subtle);
+const PBKDF2_ITERATIONS = HAS_NATIVE_CYC ? 310000 : 45000;
 
-async function deriveKey(password, saltBytes, iterations) {
-  const ikm = new TextEncoder().encode(password);
-  const keyMaterial = await crypto.subtle.importKey('raw', ikm, 'PBKDF2', false, ['deriveKey']);
-  return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt: saltBytes, iterations: iterations || PBKDF2_ITERATIONS, hash: 'SHA-256' },
-    keyMaterial,
-    { name: 'AES-GCM', length: 256 },
-    false,
-    ['encrypt', 'decrypt'],
-  );
+function randomBytes(n) {
+  if (window.crypto && window.crypto.getRandomValues) {
+    const b = new Uint8Array(n);
+    window.crypto.getRandomValues(b);
+    return b;
+  }
+  const b = new Uint8Array(n);
+  let s = Math.floor(Math.random() * 0x7fffffff) ^ Date.now() ^ ((navigator.userAgent || '').length * 0x9e3779b9);
+  for (let i = 0; i < n; i++) {
+    s = (s ^ (s << 13)) >>> 0; s = (s ^ (s >>> 17)) >>> 0; s = (s ^ (s << 5)) >>> 0;
+    b[i] = s & 0xff;
+  }
+  return b;
 }
 
-async function encryptBlob(state, password) {
-  const salt = crypto.getRandomValues(new Uint8Array(16));
-  const iv = crypto.getRandomValues(new Uint8Array(12));
-  const key = await deriveKey(password, salt);
-  const ct = await crypto.subtle.encrypt(
-    { name: 'AES-GCM', iv },
-    key,
-    new TextEncoder().encode(JSON.stringify(state)),
-  );
-  return {
-    v: 1,
-    iters: PBKDF2_ITERATIONS,
-    salt: b64(salt),
-    iv: b64(iv),
-    ct: b64(new Uint8Array(ct)),
-  };
-}
+if (HAS_NATIVE_CYC) {
 
-async function decryptBlob(blob, password) {
-  const { salt, iv, ct, iters } = blob;
-  const key = await deriveKey(password, unb64(salt), iters);
-  const plain = await crypto.subtle.decrypt(
-    { name: 'AES-GCM', iv: unb64(iv) },
-    key,
-    unb64(ct),
-  );
-  return JSON.parse(new TextDecoder().decode(plain));
+  async function deriveKey(password, saltBytes, iterations) {
+    const ikm = new TextEncoder().encode(password);
+    const keyMaterial = await crypto.subtle.importKey('raw', ikm, 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: saltBytes, iterations: iterations || PBKDF2_ITERATIONS, hash: 'SHA-256' },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['encrypt', 'decrypt'],
+    );
+  }
+
+  async function encryptBlob(state, password) {
+    const salt = randomBytes(16);
+    const iv = randomBytes(12);
+    const key = await deriveKey(password, salt);
+    const ct = await crypto.subtle.encrypt(
+      { name: 'AES-GCM', iv },
+      key,
+      new TextEncoder().encode(JSON.stringify(state)),
+    );
+    return {
+      v: 1,
+      iters: PBKDF2_ITERATIONS,
+      salt: b64(salt),
+      iv: b64(iv),
+      ct: b64(new Uint8Array(ct)),
+    };
+  }
+
+  async function decryptBlob(blob, password) {
+    const { salt, iv, ct, iters } = blob;
+    const key = await deriveKey(password, unb64(salt), iters);
+    const plain = await crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv: unb64(iv) },
+      key,
+      unb64(ct),
+    );
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+} else {
+
+  async function deriveKey(password, saltBytes, iterations) {
+    return nesteggCrypto.pbkdf2(password, saltBytes, iterations || PBKDF2_ITERATIONS, 32);
+  }
+
+  async function encryptBlob(state, password) {
+    const salt = randomBytes(16);
+    const iv = randomBytes(12);
+    const key = await deriveKey(password, salt);
+    const data = nesteggCrypto.gcmEncrypt(key, iv, new TextEncoder().encode(JSON.stringify(state)));
+    return {
+      v: 1,
+      iters: PBKDF2_ITERATIONS,
+      salt: b64(salt),
+      iv: b64(iv),
+      ct: b64(data),
+    };
+  }
+
+  async function decryptBlob(blob, password) {
+    const { salt, iv, ct, iters } = blob;
+    const key = await deriveKey(password, unb64(salt), iters);
+    const plain = nesteggCrypto.gcmDecrypt(key, unb64(iv), unb64(ct));
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
 }
 
 /* =================== API =================== */
@@ -1192,7 +1239,7 @@ function loadSampleData() {
 }
 
 /* =================== boot =================== */
-if (window.crypto && window.crypto.subtle) {
+if (HAS_NATIVE_CYC || (window.nesteggCrypto && nesteggCrypto.pbkdf2)) {
   init();
 } else {
   document.body.innerHTML = '<div style="padding:60px;text-align:center;font-family:sans-serif">' +

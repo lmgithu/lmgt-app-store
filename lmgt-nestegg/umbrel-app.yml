@@ -2,7 +2,7 @@ manifestVersion: 1
 id: lmgt-nestegg
 category: finance
 name: NestEgg
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-nestegg/icon.png?v5
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-nestegg/icon.png?v6
 version: "1.0.0"
 tagline: Private portfolio tracker for cash, stocks & crypto
 description: >-
