@@ -1242,6 +1242,13 @@ function loadSampleData() {
 if (HAS_NATIVE_CYC || (window.nesteggCrypto && nesteggCrypto.pbkdf2)) {
   init();
 } else {
-  document.body.innerHTML = '<div style="padding:60px;text-align:center;font-family:sans-serif">' +
-    'NestEgg needs a browser with Web Crypto (modern Chrome, Firefox, Safari or Edge).</div>';
+  document.body.innerHTML =
+    '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#090b0f;font-family:ui-sans-serif,system-ui,sans-serif">' +
+    '<div style="max-width:420px;width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px;text-align:center;color:#e9edf3">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#34d399">NestEgg</div>' +
+    '<h1 style="font-size:20px;margin:12px 0 8px">This browser can\u2019t unlock your vault</h1>' +
+    '<p style="font-size:14px;line-height:1.55;color:#96a0ae">It looks like secure Web Crypto was unavailable, so the in-browser crypto core could not load.</p>' +
+    '<button onclick="location.reload(true)" style="margin-top:20px;border:0;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:600;cursor:pointer;color:#06120e;background:linear-gradient(135deg,#34d399,#22d3ee)">Reload NestEgg</button>' +
+    '<p style="font-size:12px;margin-top:16px;color:#5c6672">NestEgg runs entirely on this device. Open via http://umbrel.local:3910</p>' +
+    '</div></div>';
 }

@@ -214,6 +214,7 @@ async function apiFx(req, res) {
 function serveStatic(req, res, urlPath) {
   let rel = decodeURIComponent(urlPath.split('?')[0]);
   if (rel === '/' || rel === '') rel = '/index.html';
+  if (rel === '/favicon.ico') rel = '/logo.svg';
   const fp = path.normalize(path.join(PUBLIC_DIR, rel));
   if (!fp.startsWith(PUBLIC_DIR) || fp === PUBLIC_DIR) {
     res.writeHead(403); return res.end();
@@ -225,11 +226,17 @@ function serveStatic(req, res, urlPath) {
       return;
     }
     const ext = path.extname(fp).toLowerCase();
+    const etag = '"' + crypto.createHash('sha1').update(data).digest('hex').slice(0, 16) + '"';
+    if (req.headers['if-none-match'] === etag) {
+      res.writeHead(304, { 'ETag': etag });
+      return res.end();
+    }
     res.writeHead(200, {
       'Content-Type': MIME[ext] || 'application/octet-stream',
       'X-Content-Type-Options': 'nosniff',
       'Referrer-Policy': 'no-referrer',
       'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=3600',
+      'ETag': etag,
     });
     res.end(data);
   });
