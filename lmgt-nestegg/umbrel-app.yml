@@ -3,7 +3,7 @@ id: lmgt-nestegg
 category: finance
 name: NestEgg
 icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-nestegg/icon.png?v6
-version: "1.0.0"
+version: "1.0.1"
 tagline: Private portfolio tracker for cash, stocks & crypto
 description: >-
   NestEgg is a private, single-user portfolio tracker. Track cash reserves in any currency, stock holdings, and crypto — all converted to your chosen base currency.
@@ -28,4 +28,9 @@ support: https://github.com/lmgithu/lmgt-app-store/issues
 port: 3910
 path: ""
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  1.0.1
+
+  - Fixed the "NestEgg needs a browser with Web Crypto" error on plain HTTP — added a pure-JS crypto fallback, so unlocking works in any browser
+
+  - New piggy-bank logo (app, favicon and Umbrel icon)
