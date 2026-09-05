@@ -42,12 +42,3 @@ jobs:
           tags: |
             ghcr.io/lmgithu/nestegg:1.0.0
             ghcr.io/lmgithu/nestegg:latest
-
-      - name: Make package public
-        run: |
-          curl -sS -X PATCH \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -d '{"visibility":"public"}' \
-            https://api.github.com/user/packages/container/nestegg
