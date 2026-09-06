@@ -1,0 +1,39 @@
+services:
+  app_proxy:
+    environment:
+      APP_HOST: lmgt-numbers_web_1
+      APP_PORT: 3000
+      # Umbrel auth is deliberately left enabled (PROXY_AUTH_ADD defaults to
+      # true, so it is not set here). It is a second gate in front of the app's
+      # own master password, and it is the only gate during the first-run window
+      # before a master password exists - without it, anyone who can reach the
+      # host could claim the instance by setting their own password.
+
+  web:
+    # Pin the multi-arch manifest-list digest, not a per-arch digest.
+    # REPLACE PLACEHOLDER_DIGEST with the digest printed by the build workflow
+    # (job summary of .github/workflows/build.yml in the lmgithu/numbers repo,
+    # or `docker buildx imagetools inspect ghcr.io/lmgithu/numbers:1.0.0`).
+    image: ghcr.io/lmgithu/numbers:1.0.0@sha256:PLACEHOLDER_DIGEST
+    restart: on-failure
+    stop_grace_period: 1m
+    # Reap the healthcheck's short-lived node processes and forward signals so
+    # SQLite gets a clean WAL checkpoint on stop.
+    init: true
+    # Matches the ownership Umbrel gives ${APP_DATA_DIR}, and the node user in
+    # the image. SQLite needs to write the -wal/-shm files in /data.
+    user: "1000:1000"
+    environment:
+      PORT: "3000"
+      NUMBERS_DATA_DIR: "/data"
+      TZ: "Europe/Luxembourg"
+    volumes:
+      # Holds numbers.db plus its WAL sidecars. The source directory is
+      # committed in this package so Docker does not create it as root.
+      - ${APP_DATA_DIR}/data/db:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/healthz').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

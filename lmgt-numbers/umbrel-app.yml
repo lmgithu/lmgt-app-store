@@ -1,0 +1,56 @@
+manifestVersion: 1
+id: lmgt-numbers
+category: finance
+name: Numbers
+version: "1.0.0"
+tagline: Private portfolio tracker and FIRE calculator
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-numbers/icon.png?v1
+description: >-
+  Numbers is a single-user portfolio tracker and FIRE (Financial Independence,
+  Retire Early) calculator. Record what you own, see it valued at live prices in
+  your base currency, and project when your investments could cover your
+  spending.
+
+
+  On first launch you create a master password. It never leaves your browser:
+  Numbers derives a key from it with PBKDF2 and encrypts your data with AES-GCM
+  before sending anything to the server. The server stores opaque ciphertext and
+  never holds the key.
+
+
+  The master password cannot be recovered. There is no reset link, no recovery
+  code, and no way for anyone to unlock the data for you. If you lose it, your
+  portfolio is permanently unreadable, including in any Umbrel backup. Save it in
+  a password manager before you enter data you care about.
+
+
+  - Track stocks, ETFs, funds, crypto, cash, and other assets in one place
+
+  - Live price and FX lookups, converted to the base currency you pick
+
+  - FIRE projections driven by your own savings rate and withdrawal assumptions
+
+  - Client-side encryption: the server only ever sees encrypted blobs
+
+  - Data lives in a SQLite database under your Umbrel app data, so it is covered
+  by Umbrel backups
+
+
+  Numbers needs outbound internet access to fetch prices and exchange rates. It
+  sits behind your Umbrel login as well as its own master password, so the app is
+  protected even during first-run setup.
+releaseNotes: ""
+
+developer: LMGT
+website: https://github.com/lmgithu/lmgt-app-store
+dependencies: []
+repo: https://github.com/lmgithu/lmgt-app-store
+support: https://github.com/lmgithu/lmgt-app-store/issues
+
+port: 3910
+gallery: []
+path: ""
+
+# The app has no preset credentials: the master password is created on first run.
+defaultUsername: ""
+defaultPassword: ""
