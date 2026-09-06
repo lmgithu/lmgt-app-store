@@ -15,7 +15,7 @@ services:
   web:
     # Pin the multi-arch manifest-list digest, not a per-arch digest. The build
     # workflow prints the correct one to its job summary.
-    image: ghcr.io/lmgithu/numbers:1.0.14@sha256:c2ba648b7f435487d4d6dc1a0a0a17a45f9ec5a4e47eb337d82b56d1f1ca4689
+    image: ghcr.io/lmgithu/numbers:1.0.15@sha256:2662a3e1d637584970e1cf24842bb050d40ec82c36e2b062be2fa7a1f687a8cf
     restart: on-failure
     stop_grace_period: 1m
     # Reap the healthcheck's short-lived node processes and forward signals so
