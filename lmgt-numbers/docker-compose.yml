@@ -1,20 +1,21 @@
 services:
-  app_proxy:
-    environment:
-      APP_HOST: lmgt-numbers_web_1
-      APP_PORT: 3000
-      # Umbrel auth is deliberately left enabled (PROXY_AUTH_ADD defaults to
-      # true, so it is not set here). It is a second gate in front of the app's
-      # own master password, and it is the only gate during the first-run window
-      # before a master password exists - without it, anyone who can reach the
-      # host could claim the instance by setting their own password.
-
+  # No app_proxy: this app publishes its own port and is reached directly at
+  # http://<umbrel-host>:3910, so it can be opened from a device that is not signed
+  # in to Umbrel.
+  #
+  # The trade-off, stated plainly because it is not recoverable after the fact:
+  # Umbrel's login no longer sits in front of this app, so the master password is the
+  # only gate. That includes the window immediately after install, before a master
+  # password exists — until you set one, anyone who can reach this port on the network
+  # can claim the vault by setting their own. Set the password right after installing.
+  #
+  # The app's own defences carry the weight instead: PBKDF2 (600k iterations) with
+  # AES-256-GCM performed in the browser, scrypt-hashed auth key on the server,
+  # exponential lockout on failed logins, in-memory sessions, and a strict CSP.
   web:
-    # Pin the multi-arch manifest-list digest, not a per-arch digest.
-    # REPLACE PLACEHOLDER_DIGEST with the digest printed by the build workflow
-    # (job summary of .github/workflows/build.yml in the lmgithu/numbers repo,
-    # or `docker buildx imagetools inspect ghcr.io/lmgithu/numbers:1.0.0`).
-    image: ghcr.io/lmgithu/numbers:1.0.4@sha256:cdd14fbd11698147c388e0adf909e64c85003b6da211ced074974fa1b5a246f3
+    # Pin the multi-arch manifest-list digest, not a per-arch digest. The build
+    # workflow prints the correct one to its job summary.
+    image: ghcr.io/lmgithu/numbers:1.0.5@sha256:cdd14fbd11698147c388e0adf909e64c85003b6da211ced074974fa1b5a246f3
     restart: on-failure
     stop_grace_period: 1m
     # Reap the healthcheck's short-lived node processes and forward signals so
@@ -23,8 +24,12 @@ services:
     # Matches the ownership Umbrel gives ${APP_DATA_DIR}, and the node user in
     # the image. SQLite needs to write the -wal/-shm files in /data.
     user: "1000:1000"
+    # The manifest's `port` must match a real host listener now that nothing proxies
+    # for us, so the app listens on 3910 directly rather than on 3000.
+    ports:
+      - "3910:3910"
     environment:
-      PORT: "3000"
+      PORT: "3910"
       NUMBERS_DATA_DIR: "/data"
       TZ: "Europe/Luxembourg"
     volumes:
@@ -32,7 +37,7 @@ services:
       # committed in this package so Docker does not create it as root.
       - ${APP_DATA_DIR}/data/db:/data
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/healthz').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3910/api/healthz').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 3
