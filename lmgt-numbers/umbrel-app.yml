@@ -2,9 +2,9 @@ manifestVersion: 1
 id: lmgt-numbers
 category: finance
 name: Numbers
-version: "1.0.6"
+version: "1.0.7"
 tagline: Numbers
-icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-numbers/icon.png?v7
+icon: https://raw.githubusercontent.com/lmgithu/lmgt-app-store/refs/heads/main/lmgt-numbers/icon.png?v8
 description: Numbers
 releaseNotes: ""
 
