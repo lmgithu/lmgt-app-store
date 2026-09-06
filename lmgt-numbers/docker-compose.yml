@@ -14,7 +14,7 @@ services:
     # REPLACE PLACEHOLDER_DIGEST with the digest printed by the build workflow
     # (job summary of .github/workflows/build.yml in the lmgithu/numbers repo,
     # or `docker buildx imagetools inspect ghcr.io/lmgithu/numbers:1.0.0`).
-    image: ghcr.io/lmgithu/numbers:1.0.2@sha256:537b760ce9c297603e678afad8274cfbc83bc020de67bf2588b71e9bb5061553
+    image: ghcr.io/lmgithu/numbers:1.0.3@sha256:157cd335e09798d922b074048652c90edc5d95728b2b3694cff9319d818d1b5f
     restart: on-failure
     stop_grace_period: 1m
     # Reap the healthcheck's short-lived node processes and forward signals so
